@@ -1,3 +1,4 @@
+
 import DBConnection as db
 import json as json
 import random
@@ -28,3 +29,22 @@ def get_pirate(pirate_id: int):
         if not row:
             raise ValueError("Pirate not found")
         return row
+
+def list_random_airports():
+        witdh
+        db.get_db() as conn:
+        cur = conn.cursor(dictionary=True)
+        cur.execute("""
+                SELECT Id,ident, name, iso_region 
+                FROM airport 
+                WHERE type = 'large_airport'
+                ORDER BY RAND() 
+                LIMIT 10;
+            """)
+        return cur.fetchall()
+
+def airports_in_region(region: str):
+    with db.get_db() as (conn):
+        cur = conn.cursor()
+        cur.execute("SELECT id, code, name FROM airport WHERE iso_region=%s ORDER BY code;", (region,))
+        return cur.fetchall()
