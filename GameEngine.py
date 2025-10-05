@@ -90,3 +90,35 @@ def play(self):
             routes.append({"stops": stops, "navy_meets": navy_meets})
         return routes
 
+        def print_summary(self, pirate_id: int, start: Dict, dest: Dict, route: Dict, result: Dict):
+            p = get_pirate(pirate_id)
+            print("\n========== VOYAGE SUMMARY ==========")
+            print(f"Pirate : {p['pirate_name']}  |  Boat: {p['boat_name']}")
+            print(f"Route  : {' -> '.join([s['ident'] for s in route['stops']])}")
+            print(f"Encounters: {len(result['steps_log'])}")
+            for idx, step in enumerate(result["steps_log"], 1):
+                sign = "+" if step["gold_delta"] >= 0 else ""
+                print(f"  {idx}. {step['mode'].title()} | Life -{step['life_loss']} | Gold {sign}{step['gold_delta']}")
+            status = "🏴‍☠️ Found the treasure!" if result["reached"] else "💀 Lost at sea..."
+            print(f"\nStatus : {status}")
+            print(f"Final  : Life={result['final_life']} | Gold={result['final_gold']}")
+            print("====================================\n")
+
+        print("\n=== Available Routes ===")
+        for i, r in enumerate(routes, 1):
+            path = " -> ".join([s["ident"] for s in r["stops"]])
+            print(f"{i}. {path}   | Navy meets: {r['navy_meets']}")
+        chosen = None
+        while chosen is None:
+            try:
+                idx = int(input("Pick route number: ").strip())
+                if 1 <= idx <= len(routes):
+                    chosen = routes[idx - 1]
+                else:
+                    print("Invalid route number.")
+            except ValueError:
+                print("Please enter a number.")
+
+
+
+
