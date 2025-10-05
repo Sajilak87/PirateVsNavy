@@ -1,3 +1,5 @@
+
+
 def choose_boat_interactive(self):
     boats = list_boats()
     print("\n=== Choose your Pirate Boat ===")
@@ -61,3 +63,30 @@ def play(self):
         # Region & airports
         airports = self.choose_start_airport_form_list()
         start_id = self.choose_start_airport_interactive(airports)
+
+
+        # ----------- Route Generation -----------
+
+    def _pick_intermediates(self, region: list, start_id: str, dest_id: str, max_hops: int):
+        """Pick up to max_hops distinct airports (not start/dest) as waypoints."""
+        candidates = [a for a in region if a["ident"] not in {start_id, dest_id}]
+        self.rng.shuffle(candidates)
+        hops = self.rng.randint(0, max_hops)
+        return candidates[:hops]
+
+    def generate_routes(self, selectedAirports: list, start_airport_id: str, dest_airport_id: str, n_routes: int = 4):
+
+        aps_all = {a["ident"]: a for a in selectedAirports}
+        start = aps_all[start_airport_id]
+        dest = aps_all[dest_airport_id]
+
+        routes = []
+        for _ in range(n_routes):
+            waypoints = self._pick_intermediates(selectedAirports, start["ident"], dest["ident"], max_hops=3)
+            stops = [start] + waypoints + [dest]
+            # Navy meets scale roughly with hops, plus randomness
+            base_meets = max(1, len(stops) - 1)
+            navy_meets = base_meets + self.rng.randint(0, 2)
+            routes.append({"stops": stops, "navy_meets": navy_meets})
+        return routes
+

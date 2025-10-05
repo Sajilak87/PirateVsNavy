@@ -3,6 +3,12 @@ import DBConnection as db
 import json as json
 import random
 
+def list_boats():
+    with db.get_db() as (conn):
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT id, name, base_life, base_gold FROM boats ORDER BY id;")
+        return cur.fetchall()
+
 def create_pirate(pirate_name: str, boat_id: int):
     with db.get_db() as (conn):
         cur = conn.cursor(dictionary=True)
