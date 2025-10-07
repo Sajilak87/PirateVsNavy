@@ -1,5 +1,6 @@
 import random
 from typing import Dict, Tuple
+import os, sys, time, shutil
 
 from ALLQueries import (
     list_boats, create_pirate, get_pirate, update_pirate_stats,
@@ -11,8 +12,49 @@ class GameEngine:
     def __init__(self, rng_seed: int | None = None):
         self.rng = random.Random(rng_seed)
 
+    def center_text(self,text: str):
+        width = shutil.get_terminal_size().columns
+        return text.center(width)
+
+    def start_game_screen(self,pirate_name: str):
+        print()
+        subtitle = f"☠️  Hoisting the sails, Captain 🏴‍☠️{pirate_name}!"
+        loading_steps = [
+            "🌊 The salty wind blows as your ship creaks to life...",
+            "🗺️  The crew gathers 'round the map, awaiting your command.",
+            "💰 Rumors whisper of treasure buried in distant lands...",
+            "⚓ Steady your heart, Captain — adventure awaits!"
+        ]
+
+        print(self.center_text("*" * 60))
+        print(self.center_text("***********  ‍☠️  PIRATES vs NAVY  ☠️ ***********"))
+        print(self.center_text("*" * 60))
+        print()
+
+        # Subtitle
+        for ch in subtitle:
+            sys.stdout.write(ch)
+            sys.stdout.flush()
+            time.sleep(0.08)
+        print()
+        time.sleep(0.8)
+
+        # Loading sequence
+        for step in loading_steps:
+            print(self.center_text(step))
+            time.sleep(0.5)
+
+        print()
+        print(self.center_text("*" * 60))
+        print(self.center_text("***************  START GAME  ***************"))
+        print(self.center_text("*" * 60))
+        print()
+        time.sleep(1)
+
+
     def create_pirate_interactive(self):
         pirate_name = input("Enter your pirate name: ").strip() or "Nameless Corsair"
+        self.start_game_screen(pirate_name)
         boat_id = self.choose_boat_interactive()
         pirate_id = create_pirate(pirate_name, boat_id)
         p = get_pirate(pirate_id)
