@@ -37,8 +37,7 @@ def get_pirate(pirate_id: int):
         return row
 
 def list_random_airports():
-        witdh
-        db.get_db() as conn:
+    with db.get_db() as (conn):
         cur = conn.cursor(dictionary=True)
         cur.execute("""
                 SELECT Id,ident, name, iso_region 
@@ -49,8 +48,28 @@ def list_random_airports():
             """)
         return cur.fetchall()
 
+def update_pirate_stats(pirate_id: int, gold: int, life: int):
+    with db.get_db() as (conn):
+        cur = conn.cursor()
+        cur.execute("UPDATE pirates SET gold=%s, life=%s WHERE id=%s", (gold, life, pirate_id))
+
+def list_regions():
+    with db.get_db() as (conn):
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT DISTINCT iso_region FROM airport ORDER BY iso_region;")
+        return [r["iso_region"] for r in cur.fetchall()]
+
 def airports_in_region(region: str):
     with db.get_db() as (conn):
         cur = conn.cursor()
         cur.execute("SELECT id, code, name FROM airport WHERE iso_region=%s ORDER BY code;", (region,))
         return cur.fetchall()
+
+def save_game_run(pirate_id: int, start_airport_id: str, dest_airport_id: str,
+                  chosen_route: dict, result: str, final_gold: int, final_life: int):
+    with db.get_db() as (conn):
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO game_runs (pirate_id, start_airport_id, dest_airport_id, chosen_route, result, final_gold, final_life)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (pirate_id, start_airport_id, dest_airport_id, json.dumps(chosen_route), result, final_gold, final_life))

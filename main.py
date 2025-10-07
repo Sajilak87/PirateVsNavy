@@ -1,14 +1,11 @@
-# This is a sample Python script.
+import GameEngine as gm
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    print("🏴‍☠️  PIRATE ROUTES — The Airport Treasure Run")
+    print("Connecting to database & preparing the seas...\n")
 
+    engine = gm.GameEngine()
+    engine.play()
 
-def print_hi(game):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {game}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+if __name__ == "__main__":
+    main()
