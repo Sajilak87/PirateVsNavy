@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pirate Map Prototype</title>
+    <link rel="stylesheet" href="Css/sample.css">
+</head>
+
+<body>
+
+<div id="ui-top">
+    <button id="backBtn">⟵</button>
+    <div id="username">User Name</div>
+</div>
+
+<div id="map">
+    <!-- PATH POINTS -->
+    <div class="point" style="top: 260px; left: 80px;"></div>
+    <div class="point" style="top: 150px; left: 220px;"></div>
+    <div class="point" style="top: 200px; left: 380px;"></div>
+    <div class="point" style="top: 120px; left: 550px;"></div>
+    <div class="point" style="top: 240px; left: 720px;"></div>
+
+    <!-- PIRATE SHIP -->
+    <img id="ship" src="Images/ship.png">
+</div>
+
+<!-- ENCOUNTER POPUP -->
+<div id="popup">
+    <div id="popup-header">
+        <span>Encounter</span>
+        <button id="closePopup">✖</button>
+    </div>
+
+    <div id="popup-body">
+        <div class="stat">
+            ❤️ Enemy HP: <div class="bar"><div class="fill red"></div></div>
+        </div>
+        <div class="stat">
+            🟦 Loot Chance: <div class="bar"><div class="fill blue"></div></div>
+        </div>
+
+        <div id="popup-buttons">
+            <button class="game-btn fight">Fight</button>
+            <button class="game-btn trade">Trade</button>
+        </div>
+    </div>
+</div>
+
+<script src="Js/sample.js"></script>
+</body>
+</html>
