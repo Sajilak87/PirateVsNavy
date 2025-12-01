@@ -7,6 +7,6 @@ def get_db():
         port=3306,
         database='piratevsnavy_game',
         user='root',
-        password='password',
+        password='8999',
         autocommit=True
     )
