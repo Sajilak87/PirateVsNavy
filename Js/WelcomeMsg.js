@@ -37,3 +37,21 @@ closePopupBtn.onclick = closePopup;
 
 // Start animation
 setTimeout(moveShip, 700);
+
+
+// This runs after the HTML is parsed because of "defer"
+const homeBtn = document.getElementById("homeBtn");
+if (homeBtn) {
+    homeBtn.addEventListener("click", function () {
+        // Home.html is in the same folder as WelcomeMsg.html
+        window.location.href = "Home.html";
+    });
+}
+
+// (optional) Back button logic
+const backBtn = document.getElementById("backBtn");
+if (backBtn) {
+    backBtn.addEventListener("click", function () {
+        window.history.back();
+    });
+}
