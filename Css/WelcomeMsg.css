@@ -1,10 +1,4 @@
-/* =========================================================
-   Pirate vs Navy – Welcome Screen
-   File: Css/GameCss.css
-   Used by: WelcomeMsg.html
-   =======================================================*/
 
-/* ----- PAGE BACKGROUND ----- */
 body.welcome-screen {
     margin: 0;
     font-family: "Poppins", Arial, sans-serif;
@@ -12,7 +6,7 @@ body.welcome-screen {
     color: #ffffff;
 }
 
-/* ----- TOP BLUE BAR (BACK, HOME, USER NAME) ----- */
+
 
 #ui-top {
     display: flex;
@@ -60,7 +54,7 @@ body.welcome-screen {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* ----- MAIN AREA UNDER TOP BAR ----- */
+
 
 .app-frame {
     width: 100%;
@@ -72,9 +66,6 @@ body.welcome-screen {
     box-sizing: border-box;
 }
 
-/* ----- GOLD TREASURE WELCOME PANEL -----
-   Works for BOTH .welcome-panel and .welcome-box
------------------------------------------*/
 
 .welcome-panel,
 .welcome-box {
@@ -90,7 +81,7 @@ body.welcome-screen {
     text-align: center;
 }
 
-/* title text */
+
 .welcome-title {
     color: #ffe58a;
     font-size: 34px;
@@ -98,7 +89,6 @@ body.welcome-screen {
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
 }
 
-/* message text */
 .welcome-text {
     color: #fff4cc;
     font-size: 19px;
@@ -107,7 +97,7 @@ body.welcome-screen {
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
-/* button */
+
 .welcome-btn {
     background: linear-gradient(145deg, #ffe58a, #d8b347);
     color: #4a3500;
@@ -127,7 +117,7 @@ body.welcome-screen {
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
 }
 
-/* ----- SMALL SCREEN TWEAKS ----- */
+
 @media (max-width: 700px) {
     #ui-top {
         padding: 10px 16px;

@@ -6,27 +6,26 @@
     <link rel="stylesheet" href="Css/GameCss.css">
     <script src="Js/WelcomeMsg.js" defer></script>
 
-    <!-- Page–specific styles -->
+
     <style>
-        /* Only affects this page */
+
         body.welcome-screen {
             margin: 0;
             font-family: Poppins, Arial, sans-serif;
-            background: #222;  /* same dark theme */
+            background: #222;
         }
 
-        /* container under the blue bar */
+
         .welcome-screen .app-frame {
             width: 100%;
-            min-height: calc(100vh - 80px); /* space under top bar */
+            min-height: calc(100vh - 80px);
             display: flex;
-            justify-content: center;  /* center horizontally */
+            justify-content: center;
             align-items: flex-start;
-            padding-top: 70px;       /* distance under blue bar */
+            padding-top: 70px;
             box-sizing: border-box;
         }
 
-        /* nice welcome card */
         .welcome-panel {
             max-width: 650px;
             width: 90%;
@@ -78,7 +77,6 @@
 
 <body class="welcome-screen">
 
-<!-- 🔵 TOP BLUE BAR – unchanged -->
 <div id="ui-top">
     <div class="top-left-group">
         <button id="backBtn">⟵</button>
@@ -88,7 +86,7 @@
     <div id="username">User Name</div>
 </div>
 
-<!-- ⭐ WELCOME MESSAGE IN THE MIDDLE -->
+
 <div class="app-frame">
     <div class="welcome-panel">
  <h1 class="welcome-title">⚓ Pirates vs Navy ⚓</h1>
