@@ -1,31 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-    margin: 0;
-    background: #222;
-    font-family: "Trebuchet MS", Arial;
-    color: white;
+  background: #0c1b2a;
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* -------- Top Close Button -------- */
 #ui-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background: #1c3d5e;
-    color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-#ui-top button {
-    background: #386fa4;
-    border: none;
-    padding: 10px 14px;
-    color: white;
-    font-size: 18px;
-    border-radius: 6px;
-    cursor: pointer;
+#closeBtn {
+  background: #b30000;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#username {
-    background: #2f4b7d;
-    padding: 8px 16px;
-    border-radius: 8px;
+#closeBtn:hover {
+  background: #e60000;
+}
+
+/* -------- Header -------- */
+.site-header {
+  background: #07121f;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.site-nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ddd;
+  font-size: 18px;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+/* -------- Title -------- */
+.title {
+  margin: 30px 0;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* -------- Main Hero Section -------- */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  background: #0077ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #005fcc;
+}
+
+/* -------- Card Section -------- */
+.card {
+  background: #10263f;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+.card h2 {
+  font-size: 24px;
+}
+
+/* -------- Footer -------- */
+.site-footer {
+  margin-top: auto;
+  padding: 20px;
+  background: #07121f;
 }
