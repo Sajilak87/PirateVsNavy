@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Pirate vs Navy – Routes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Css/GameCss.css">
+    <script src="Js/WelcomeMsg.js" defer></script>
 </head>
+
+
+<script>
+    function goHome() {
+        // Home.html is in the same folder as WelcomeMsg.html
+        window.location.href = "Home.html";
+    }
+</script>
+</body>
+</html>
+
 <body>
+
+<div id="ui-top">
+    <div class="top-left-group">
+        <button id="backBtn">⟵</button>
+        <button id="homeBtn" onclick="goHome()">🏠</button>
+
+    </div>
+
+    <div id="username">User Name</div>
+</div>
+
 <div class="app-frame">
 
-    <button class="home-btn" title="Home">
-        🏠
-    </button>
-    <button class="user-btn" title="User Name">
-    USER<br>NAME
-</button>
-    <div class="interface-box">
-
-
+</div>
