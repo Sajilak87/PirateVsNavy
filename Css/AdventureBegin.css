@@ -34,7 +34,6 @@ body {
     pointer-events: none;
 }
 
-/* header bar */
 .game-header {
     position: relative;
     z-index: 2;
@@ -75,4 +74,108 @@ body {
 .user-label {
     font-weight: 600;
     color: #205165;
+}
+
+.game-content {
+    position: relative;
+    z-index: 1;
+    height: calc(100% - 110px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-island {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    background: #fffbe2;
+    border: 5px solid #2d2d2d;
+    border-radius: 55% 45% 60% 40% / 55% 45% 60% 40%;
+    overflow: hidden;
+}
+
+.route-svg {
+    position: absolute;
+    inset: 12% 10%;
+    width: 80%;
+    height: 76%;
+}
+
+.ship {
+    position: absolute;
+    width: 80px;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.25));
+}
+
+.ship-1 {
+    left: 28%;
+    top: 58%;
+}
+
+.ship-2 {
+    left: 54%;
+    top: 32%;
+}
+
+.ship-3 {
+    left: 65%;
+    top: 65%;
+}
+
+.start-marker,
+.treasure-marker {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.start-marker {
+    left: 10%;
+    top: 65%;
+    background: #f7843e;
+    border: 4px solid #b4411c;
+}
+
+.treasure-marker {
+    right: 7%;
+    top: 45%;
+    background: #ffe861;
+    border: 4px solid #f2b701;
+    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.5);
+}
+
+.game-footer {
+    position: absolute;
+    right: 40px;
+    bottom: 26px;
+    z-index: 2;
+}
+
+.start-button {
+    padding: 10px 30px;
+    border-radius: 999px;
+    border: 3px solid #264796;
+    background: #c5ffb6;
+    font-weight: 700;
+    color: #225b30;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
 }
