@@ -47,6 +47,8 @@ body.welcome-screen {
     line-height: 1.7;
     margin-bottom: 32px;
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    animation: fadeIn 2.5s forwards;
 }
 
 /* Start button */
@@ -91,4 +93,9 @@ body.welcome-screen {
     .welcome-btn {
         font-size: 18px;
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
