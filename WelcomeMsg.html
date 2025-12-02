@@ -2,33 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pirate vs Navy – Routes</title>
+    <title>Pirate vs Navy – Welcome</title>
     <link rel="stylesheet" href="Css/GameCss.css">
     <script src="Js/WelcomeMsg.js" defer></script>
+
+    <!-- Page–specific styles -->
+    <style>
+        /* Only affects this page */
+        body.welcome-screen {
+            margin: 0;
+            font-family: Poppins, Arial, sans-serif;
+            background: #222;  /* same dark theme */
+        }
+
+        /* container under the blue bar */
+        .welcome-screen .app-frame {
+            width: 100%;
+            min-height: calc(100vh - 80px); /* space under top bar */
+            display: flex;
+            justify-content: center;  /* center horizontally */
+            align-items: flex-start;
+            padding-top: 70px;       /* distance under blue bar */
+            box-sizing: border-box;
+        }
+
+        /* nice welcome card */
+        .welcome-panel {
+            max-width: 650px;
+            width: 90%;
+            background: rgba(10, 48, 84, 0.95);
+            border-radius: 20px;
+            border: 3px solid #00aedb;
+            box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .welcome-title {
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .welcome-text {
+            color: #d6f5ff;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 26px;
+        }
+
+        .welcome-btn {
+            background: #00aedb;
+            color: #ffffff;
+            padding: 10px 26px;
+            border-radius: 10px;
+            border: 0;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .welcome-btn:hover {
+            transform: scale(1.05);
+            background: #0087aa;
+        }
+    </style>
+
+    <script>
+        function goHome() {
+            window.location.href = "Home.html";
+        }
+    </script>
 </head>
 
+<body class="welcome-screen">
 
-<script>
-    function goHome() {
-        // Home.html is in the same folder as WelcomeMsg.html
-        window.location.href = "Home.html";
-    }
-</script>
-</body>
-</html>
-
-<body>
-
+<!-- 🔵 TOP BLUE BAR – unchanged -->
 <div id="ui-top">
     <div class="top-left-group">
         <button id="backBtn">⟵</button>
         <button id="homeBtn" onclick="goHome()">🏠</button>
-
     </div>
 
     <div id="username">User Name</div>
 </div>
 
+<!-- ⭐ WELCOME MESSAGE IN THE MIDDLE -->
 <div class="app-frame">
+    <div class="welcome-panel">
+ <h1 class="welcome-title">⚓ Pirates vs Navy ⚓</h1>
 
+<p class="welcome-text">
+    🏴‍☠️ <b>Hoist the sails, Captain!</b><br><br>
+    ✨ The salty wind stirs as your ship awakens...<br>
+    🌊 Your crew gathers around the map, awaiting your command.<br>
+    🗺️ Rumors speak of treasure hidden in distant waters.<br>
+    ⚓ Steady your heart — adventure calls upon you!<br><br>
+    Are you ready to begin your journey?
+</p>
+
+<button class="welcome-btn">Start Game</button>
+
+    </div>
 </div>
+
+</body>
+</html>

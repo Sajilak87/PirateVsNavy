@@ -1,0 +1,163 @@
+/* =========================================================
+   Pirate vs Navy – Welcome Screen
+   File: Css/GameCss.css
+   Used by: WelcomeMsg.html
+   =======================================================*/
+
+/* ----- PAGE BACKGROUND ----- */
+body.welcome-screen {
+    margin: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    background: #161616; /* dark sea night */
+    color: #ffffff;
+}
+
+/* ----- TOP BLUE BAR (BACK, HOME, USER NAME) ----- */
+
+#ui-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 32px;
+    background: #00396b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+}
+
+.top-left-group {
+    display: flex;
+    gap: 12px;
+}
+
+.top-left-group button {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    border: none;
+    background: #0b4f86;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: 0.2s;
+}
+
+.top-left-group button:hover {
+    background: #11639f;
+    transform: translateY(-1px);
+}
+
+#username {
+    padding: 10px 24px;
+    border-radius: 999px;
+    background: #254f9e;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ----- MAIN AREA UNDER TOP BAR ----- */
+
+.app-frame {
+    width: 100%;
+    min-height: calc(100vh - 80px);  /* rest of the page */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 70px 0 40px;
+    box-sizing: border-box;
+}
+
+/* ----- GOLD TREASURE WELCOME PANEL -----
+   Works for BOTH .welcome-panel and .welcome-box
+-----------------------------------------*/
+
+.welcome-panel,
+.welcome-box {
+    max-width: 650px;
+    width: 90%;
+    background: linear-gradient(145deg, #3b2b06, #7a5a12); /* gold / wood */
+    border-radius: 20px;
+    border: 4px solid #e6c45c;
+    box-shadow:
+        0 0 25px rgba(255, 215, 0, 0.4),
+        inset 0 0 18px rgba(0, 0, 0, 0.6);
+    padding: 35px 45px;
+    text-align: center;
+}
+
+/* title text */
+.welcome-title {
+    color: #ffe58a;
+    font-size: 34px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* message text */
+.welcome-text {
+    color: #fff4cc;
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/* button */
+.welcome-btn {
+    background: linear-gradient(145deg, #ffe58a, #d8b347);
+    color: #4a3500;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 2px solid #fff2a8;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.welcome-btn:hover {
+    transform: scale(1.08);
+    background: linear-gradient(145deg, #fff4bf, #d4a92f);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+}
+
+/* ----- SMALL SCREEN TWEAKS ----- */
+@media (max-width: 700px) {
+    #ui-top {
+        padding: 10px 16px;
+    }
+
+    .top-left-group button {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    #username {
+        font-size: 16px;
+        padding: 8px 18px;
+    }
+
+    .welcome-panel,
+    .welcome-box {
+        padding: 26px 20px;
+    }
+
+    .welcome-title {
+        font-size: 26px;
+    }
+
+    .welcome-text {
+        font-size: 17px;
+    }
+
+    .welcome-btn {
+        font-size: 18px;
+    }
+}
