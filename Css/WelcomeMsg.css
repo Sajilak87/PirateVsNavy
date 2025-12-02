@@ -41,6 +41,7 @@ body.welcome-screen {
 }
 
 /* Message text */
+/* Added small animation to the text */
 .welcome-text {
     color: #fff4cc;
     font-size: 19px;
@@ -99,3 +100,4 @@ body.welcome-screen {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
