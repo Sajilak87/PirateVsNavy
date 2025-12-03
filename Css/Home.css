@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Trebuchet MS", Arial;
 }
 
 body {
-  background: #0c1b2a;
-  color: #fff;
+  background: #222;
+  color: white;
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -19,6 +19,12 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #1c3d5e;
+  color: white;
 }
 
 #closeBtn {
@@ -37,7 +43,7 @@ body {
 
 /* -------- Header -------- */
 .site-header {
-  background: #07121f;
+  background: #1c3d5e;
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -49,18 +55,6 @@ body {
   font-weight: bold;
 }
 
-.site-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #ddd;
-  font-size: 18px;
-}
-
-.site-nav a.active,
-.site-nav a:hover {
-  color: #fff;
-  border-bottom: 2px solid #fff;
-}
 
 /* -------- Title -------- */
 .title {
@@ -90,8 +84,7 @@ body {
   bottom: 20px;
   right: 20px;
   padding: 15px 25px;
-  background: #0077ff;
-  color: white;
+  background: green;
   text-decoration: none;
   border-radius: 8px;
   font-size: 20px;
@@ -99,7 +92,7 @@ body {
 }
 
 .btn:hover {
-  background: #005fcc;
+  background: wheat;
 }
 
 /* -------- Card Section -------- */
@@ -117,6 +110,6 @@ body {
 /* -------- Footer -------- */
 .site-footer {
   margin-top: auto;
-  padding: 20px;
-  background: #07121f;
+  padding: 12px;
+  background: #1c3d5e;
 }
