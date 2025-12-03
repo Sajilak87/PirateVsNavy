@@ -6,6 +6,14 @@ map.onload = () => {
         const port = document.createElement("div");
         port.classList.add("Port");
 
+        const x = Math.random() * 90 + 5;
+        const y = Math.random() * 90 + 5;
+
+        port.style.left = x + "%";
+        prt.style.top = y + "%";
+
+
+
 
         }
 
