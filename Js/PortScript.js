@@ -16,10 +16,8 @@ map.onload = () => {
              alert(`Port Selected! (#${i + 1})`);
         });
 
+        portsContainer.appendChild(port);
 
-
-
-
-        }
+    }
 
 }
