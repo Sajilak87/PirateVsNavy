@@ -12,9 +12,10 @@ map.onload = () => {
         port.style.left = x + "%";
         port.style.top = y + "%";
 
-        port .add EventListener("Click", () {
+        port.addEventListener("Click", () => {
+             alert(`Port Selected! (#${i + 1})`);
+        });
 
-        })
 
 
 
