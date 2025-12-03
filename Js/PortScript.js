@@ -10,7 +10,11 @@ map.onload = () => {
         const y = Math.random() * 90 + 5;
 
         port.style.left = x + "%";
-        prt.style.top = y + "%";
+        port.style.top = y + "%";
+
+        port .add EventListener("Click", () {
+
+        })
 
 
 
