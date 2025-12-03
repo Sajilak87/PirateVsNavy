@@ -101,3 +101,49 @@ body.welcome-screen {
     to   { opacity: 1; }
 }
 
+
+/* === ROUTES SECTION (SAFE, ISOLATED STYLE) === */
+
+#routes-section {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(4, 25, 55, 0.8); /* dark blue panel */
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px solid #0a6ac9;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    margin-top: 25px;                 /* gap from welcome panel */
+}
+
+#routes-section h2 {
+    color: #ffd700;                   /* gold text only here */
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* ROUTES TABLE — fully isolated */
+#routes-section .routes-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    font-size: 15px;
+}
+
+#routes-section .routes-table th {
+    background-color: #0a6ac9;
+    padding: 10px;
+    border-bottom: 2px solid #063b6d;
+    text-align: left;
+}
+
+#routes-section .routes-table td {
+    padding: 10px;
+    background-color: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(6,59,109,0.7);
+}
+
+#routes-section .routes-table tr:nth-child(even) td {
+    background-color: rgba(255,255,255,0.09);
+}
+
