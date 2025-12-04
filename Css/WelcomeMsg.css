@@ -66,12 +66,6 @@ body.welcome-screen {
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
-.welcome-btn:hover {
-    transform: scale(1.08);
-    background: linear-gradient(145deg, #fff4bf, #d4a92f);
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
-}
-
 /* Small screens */
 @media (max-width: 700px) {
     .app-frame {
@@ -91,9 +85,7 @@ body.welcome-screen {
         font-size: 17px;
     }
 
-    .welcome-btn {
-        font-size: 18px;
-    }
+
 }
 
 @keyframes fadeIn {
@@ -105,23 +97,20 @@ body.welcome-screen {
 /* === ROUTES SECTION (SAFE, ISOLATED STYLE) === */
 /* === Available Routes box – centered + light green === */
 
-#routes-section {
-    /* full centering, even if parent has padding */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 
+#routes-section {
     width: 90%;
-    max-width: 720px;
-    margin-top: 30px;
+    max-width: 650px;
+    margin: 30px auto 0;   /* centers the box */
 
     background: linear-gradient(180deg, #184b1a 0%, #0c2d0e 100%);
     border-radius: 18px;
-    border: 2px solid #7CFC00;         /* light green border */
+    border: 2px solid #7CFC00;   /* light green border */
     padding: 18px 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.45);
     box-sizing: border-box;
 }
+
 
 #routes-section h2 {
     color: #ccffcc;
