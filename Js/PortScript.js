@@ -12,6 +12,11 @@ portsContainer.style.pointerEvents = "none";
 mapContainer.appendChild(portsContainer);
 }
 
+const map = document.getElementById("map");
+  if (!map) {
+    console.warn('No element with id="map" found. Ports will still be created inside #mapContainer, but position may be off.');
+  } else {
+
 
 
 
