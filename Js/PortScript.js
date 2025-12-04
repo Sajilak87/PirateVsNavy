@@ -16,7 +16,15 @@ const map = document.getElementById("map");
   if (!map) {
     console.warn('No element with id="map" found. Ports will still be created inside #mapContainer, but position may be off.');
   } else {
-
+  const parent = map.parentElement;
+    if (parent && getComputedStyle(parent).position === "static") {
+      parent.style.position = "relative";
+    }
+  }
+const frag = document.createDocumentFragment();
+for (let i = 0; i < 10; i++) {
+  const port = document.createElement("div");
+  port.classList.add("port");
 
 
 
