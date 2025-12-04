@@ -65,48 +65,6 @@ body {
     pointer-events: none;
 }
 
-.game-header {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-}
-
-.header-left {
-    display: flex;
-    gap: 10px;
-}
-
-.icon-button {
-    width: 52px;
-    height: 52px;
-    border-radius: 10px;
-    border: 3px solid #264796;
-    background: #d4f7f9;
-    font-size: 26px;
-    cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-
-.icon-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
-}
-
-.user-pill {
-    padding: 9px 26px;
-    background: #d4f7f9;
-    border-radius: 999px;
-    border: 3px solid #264796;
-}
-
-.user-label {
-    font-weight: 600;
-    color: #205165;
-}
-
 .game-content {
     position: relative;
     z-index: 1;
