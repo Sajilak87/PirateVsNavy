@@ -5,8 +5,13 @@ const mapContainer = document.getElementById("mapContainer") || document.body;
 if (!portsContainer) {
 console.warn('No element with id="ports" found - creating one automatically.');
 portsContainer = document.createElement("div");
+portsContainer.id = "ports";
+portsContainer.style.position = "absolute";
+portsContainer.style.inset = "0";
+portsContainer.style.pointerEvents = "none";
+mapContainer.appendChild(portsContainer);
 }
-}
+
 
 
 
