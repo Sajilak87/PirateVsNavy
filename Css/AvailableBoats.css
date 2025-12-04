@@ -1,0 +1,64 @@
+#boats-section {
+    width: 90%;
+    max-width: 650px;
+    margin: 20px auto;
+    background: rgba(10, 48, 84, 0.95);
+    border-radius: 18px;
+    border: 2px solid #7CFC00;
+    padding: 18px 20px;
+    text-align: center;
+}
+
+#boats-section h2 {
+    color: #7CFC00;
+    margin-bottom: 12px;
+}
+
+.boats-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+}
+
+.boats-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+#choose-boat {
+    width: 90%;
+    max-width: 650px;
+    margin: 20px auto;
+    background: rgba(10,48,84,0.95);
+    border-radius: 18px;
+    border: 2px solid #7CFC00;
+    padding: 18px 20px;
+    text-align: center;
+}
+
+#choose-boat h3 {
+    color: #7CFC00;
+    margin-bottom: 12px;
+}
+
+.choose-container input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #7CFC00;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    margin-bottom: 12px;
+}
+
+.choose-container button {
+    width: 25%;
+    padding: 10px;
+    background: #7CFC00;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
