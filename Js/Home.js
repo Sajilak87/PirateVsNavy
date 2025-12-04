@@ -4,3 +4,35 @@ document.getElementById("closeBtn").addEventListener("click", function () {
         window.close();
     }
 });
+
+document.getElementById("startBtn").addEventListener("click", function () {
+    // Load popup HTML dynamically
+    fetch("Popup_Box.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("popupContainer").innerHTML = data;
+
+            // Show popup
+            document.querySelector(".popup-overlay").style.display = "flex";
+
+            // Close button
+            document.getElementById("popupClose").onclick = () => {
+                document.querySelector(".popup-overlay").style.display = "none";
+            };
+
+            // Submit button → go to Welcome page
+            document.getElementById("popupSubmit").onclick = () => {
+                const name = document.getElementById("pirateName").value.trim();
+                if (name === "") {
+                    alert("Enter Pirate’s Name!");
+                    return;
+                }
+
+                // Save the name for the next page
+                localStorage.setItem("pirateName", name);
+
+                // Redirect to group member's welcome UI
+                window.location.href = "WelcomeMsg.html";
+            };
+        });
+});
