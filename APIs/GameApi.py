@@ -43,5 +43,22 @@ def get_airports():
     airports = list_random_airports()
     return jsonify(airports)
 
+
+@app.post("/api/airports/choose")
+def choose_start_airport_api():
+    data = request.json
+    region = data["region"]
+    selected = data["airport_id"]
+    valid_ids = [a["ident"] for a in region]
+
+    if selected not in valid_ids:
+        return jsonify({"error": "Invalid airport ID"}), 400
+
+    return jsonify({"airport_id": selected})
+
+
+
+
+
 if __name__ == '__main__':
     app.run(use_reloader=True, host='127.0.0.1', port=5000)
