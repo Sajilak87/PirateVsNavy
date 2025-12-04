@@ -26,15 +26,10 @@ for (let i = 0; i < 10; i++) {
   const port = document.createElement("div");
   port.classList.add("port");
 
+  port.style.pointerEvents = "auto";
 
-
-window.addEventListener("load", () => {
-    for (let i = 0; i < 10; i++) {
-        const port = document.createElement("div");
-        port.classList.add("Port");
-
-        const x = Math.random() * 90 + 5;
-        const y = Math.random() * 90 + 5;
+  const x = Math.random() * 90 + 5;
+  const y = Math.random() * 90 + 5;
 
         port.style.left = x + "%";
         port.style.top = y + "%";
