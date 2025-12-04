@@ -2,33 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pirate vs Navy – Routes</title>
+    <title>Pirate vs Navy – Welcome</title>
+
+    <!-- Common styles -->
     <link rel="stylesheet" href="Css/GameCss.css">
+    <!-- My custom styles for this page -->
+    <link rel="stylesheet" href="Css/WelcomeMsg.css">
+
+    <!-- JS for this page -->
     <script src="Js/WelcomeMsg.js" defer></script>
+
+    <script>
+        // simple navigation back to Home page
+        function goHome() {
+            window.location.href = "Home.html";
+        }
+    </script>
 </head>
 
+<body class="welcome-screen">
 
-<script>
-    function goHome() {
-        // Home.html is in the same folder as WelcomeMsg.html
-        window.location.href = "Home.html";
-    }
-</script>
-</body>
-</html>
-
-<body>
-
+<!-- TOP BLUE BAR -->
 <div id="ui-top">
     <div class="top-left-group">
         <button id="backBtn">⟵</button>
         <button id="homeBtn" onclick="goHome()">🏠</button>
-
     </div>
 
     <div id="username">User Name</div>
 </div>
 
-<div class="app-frame">
+<!--  WELCOME -->
+<main class="app-frame">
+    <section class="welcome-panel">
+        <h1 class="welcome-title">⚓ Pirates vs Navy ⚓</h1>
 
-</div>
+        <p class="welcome-text">
+            🏴‍☠️ <strong>Hoist the sails, Captain!</strong><br><br>
+            ✨ The salty wind stirs as your ship awakens...<br>
+            🌊 Your crew gathers around the map, awaiting your command.<br>
+            🗺️ Rumors speak of treasure hidden in distant waters.<br>
+            ⚓ Steady your heart — adventure calls upon you!<br><br>
+            Are you ready to begin your journey?
+        </p>
+    </section>
+
+</main>
+
+</body>
+</html>
+
+
+

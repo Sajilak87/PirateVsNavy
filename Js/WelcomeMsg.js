@@ -55,3 +55,11 @@ if (backBtn) {
         window.history.back();
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Wait 5 seconds
+    setTimeout(() => {
+        // Redirect to boats page
+        window.location.href = "Boats.html";
+    }, 5000);
+});

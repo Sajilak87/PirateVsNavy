@@ -20,7 +20,14 @@ function moveShip() {
     ship.style.left = p.x + "px";
     ship.style.top = p.y + "px";
 
-    setTimeout(showPopup, 1600); // wait for move animation
+    if (currentPoint > 0) {
+        setTimeout(showPopup, 1600);
+    }
+    else {
+        currentPoint++;
+        setTimeout(moveShip, 1600);
+    }
+
 }
 
 function showPopup() {
@@ -35,5 +42,5 @@ function closePopup() {
 
 closePopupBtn.onclick = closePopup;
 
-// Start animation
+
 setTimeout(moveShip, 700);

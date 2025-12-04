@@ -1,0 +1,89 @@
+/* ============================================================
+   POPUP OVERLAY
+   ============================================================ */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* ============================================================
+   POPUP BOX (dark style matching HOME)
+   ============================================================ */
+.popup-box {
+  width: 330px;
+  padding: 25px;
+  background: #1c1c1c;
+  border: 4px solid #333;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px #000;
+}
+
+/* ============================================================
+   TITLE
+   ============================================================ */
+.popup-title {
+  font-size: 22px;
+  color: #64b5f6;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   INPUT
+   ============================================================ */
+.popup-input {
+  width: 70%;
+  padding: 12px;
+  margin: 20px 0;
+  border: 3px solid #333;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.popup-go {
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  border: 2px solid #111;
+  background: #457b9d;
+  transition: 0.15s;
+}
+
+.popup-go:hover {
+  transform: scale(1.1);
+}
+
+.popup-close {
+  background: #d62828;
+  color: white;
+  border: 2px solid #111;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  transition: 0.15s;
+}
+
+.popup-close:hover {
+  transform: scale(1.1);
+}

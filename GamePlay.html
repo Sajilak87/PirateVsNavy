@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <title>Pirate Map Prototype</title>
     <link rel="stylesheet" href="Css/GameCss.css">
+
+     <script>
+        function goHome() {
+            window.location.href = "Home.html";
+        }
+    </script>
+
 </head>
 
 <body>
 
 <div id="ui-top">
-    <button id="backBtn">⟵</button>
+    <div class="top-left-group">
+        <button id="backBtn">⟵</button>
+        <button id="homeBtn" onclick="goHome()">🏠</button>
+    </div>
     <div id="username">User Name</div>
 </div>
 
