@@ -1,5 +1,14 @@
-const portsContainer = document.getElementById("Ports");
-const map = document.getElementById("Map");
+window.addEventListener("load",() => {
+let portsContainer = document.getElementById("ports");
+const mapContainer = document.getElementById("mapContainer") || document.body;
+
+if (!portsContainer) {
+console.warn('No element with id="ports" found - creating one automatically.');
+portsContainer = document.createElement("div");
+}
+}
+
+
 
 window.addEventListener("load", () => {
     for (let i = 0; i < 10; i++) {
