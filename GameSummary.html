@@ -9,6 +9,9 @@
         function goHome() {
             window.location.href = "Home.html";
         }
+        function tryAgain() {
+            window.location.href = "GamePlay.html";
+        }
     </script>
 </head>
 
@@ -72,8 +75,8 @@
 
         </section>
         <div class="summary-actions">
-            <button class="summary-btn try-btn">Try Again</button>
-            <button class="summary-btn exit-btn">Exit</button>
+            <button class="summary-btn try-btn" onclick="tryAgain()">Try Again</button>
+            <button class="summary-btn exit-btn" onclick="goHome()">Exit</button>
         </div>
     </main>
 
