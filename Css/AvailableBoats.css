@@ -4,6 +4,7 @@ body.boats-screen {
     background: #222;
 }
 
+/* Center the main panel */
 .app-frame {
     width: 100%;
     min-height: calc(100vh - 80px);
@@ -14,6 +15,7 @@ body.boats-screen {
     box-sizing: border-box;
 }
 
+/* Main card */
 #boats-panel {
     width: 90%;
     max-width: 650px;
@@ -25,6 +27,7 @@ body.boats-screen {
     color: #fff;
 }
 
+/* Title */
 .boats-title {
     text-align: center;
     margin-top: 0;
@@ -33,22 +36,31 @@ body.boats-screen {
     color: #f9d66a;
 }
 
+/* ==== BOAT LIST BOX ==== */
 .boat-list {
     list-style: none;
     margin: 0 0 18px 0;
-    padding: 0;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 14px;
+    border: 1px solid rgba(249, 214, 106, 0.35);
 }
 
 .boat-list li {
     display: flex;
     gap: 8px;
     align-items: center;
+    justify-content: space-between;
     padding: 6px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.boat-list li:last-child {
+    border-bottom: none;
+}
+
 .boat-number {
-    width: 24px;
+    width: 28px;
     font-weight: 600;
     color: #f9d66a;
 }
@@ -60,19 +72,23 @@ body.boats-screen {
 
 .boat-stats {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
-/* Choose section */
+/* ==== CHOOSE YOUR BOAT BOX ==== */
 .choose-boat {
     margin-top: 16px;
-    padding-top: 10px;
+    padding: 14px 16px 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 14px;
+    border: 1px solid #7CFC00;
 }
 
 .choose-boat h2 {
     margin: 0 0 8px 0;
     font-size: 1.2rem;
     color: #7CFC00;
+    text-align: left;
 }
 
 .choose-label {
@@ -81,6 +97,7 @@ body.boats-screen {
     font-size: 0.95rem;
 }
 
+/* input + button row */
 .choose-row {
     display: flex;
     gap: 10px;
@@ -91,10 +108,20 @@ body.boats-screen {
     padding: 8px 10px;
     border-radius: 10px;
     border: 1px solid #7CFC00;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.6);
     color: #fff;
     font-size: 0.95rem;
     outline: none;
+}
+
+/* remove spinners in some browsers (optional) */
+#boatNumber::-webkit-outer-spin-button,
+#boatNumber::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#boatNumber[type=number] {
+    -moz-appearance: textfield;
 }
 
 #chooseBoatBtn {
@@ -106,4 +133,26 @@ body.boats-screen {
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+#chooseBoatBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+#chooseBoatBtn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* ==== SMALL SCREEN FIX ==== */
+@media (max-width: 480px) {
+    .choose-row {
+        flex-direction: column;
+    }
+
+    #chooseBoatBtn {
+        width: 100%;
+    }
 }
