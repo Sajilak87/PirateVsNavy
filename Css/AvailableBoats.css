@@ -156,3 +156,13 @@ body.boats-screen {
         width: 100%;
     }
 }
+
+
+body.boats-screen {
+    margin: 0;
+    font-family: Poppins, Arial, sans-serif;
+
+    /*  Background image for Available Boats page */
+    background: url("../Images/boats.png") no-repeat center center fixed;
+    background-size: cover;
+}
