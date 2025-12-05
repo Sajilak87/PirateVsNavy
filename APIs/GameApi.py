@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 
 from ALLQueries import (
-    create_pirate, get_pirate,list_boats,list_random_airports
+    create_pirate, get_pirate,list_boats,list_random_airports,update_pirate_stats,save_game_run,get_Summary
 )
+from GameEngine import GameEngine
 
+engine = GameEngine()
 
 app = Flask(__name__)
 
@@ -44,19 +46,194 @@ def get_airports():
     return jsonify(airports)
 
 
-@app.post("/api/airports/choose")
-def choose_start_airport_api():
-    data = request.json
-    region = data["region"]
-    selected = data["airport_id"]
-    valid_ids = [a["ident"] for a in region]
+@app.route("/api/set-start", methods=["POST"])
+def api_set_start():
 
-    if selected not in valid_ids:
-        return jsonify({"error": "Invalid airport ID"}), 400
+    data = request.get_json()
+    start_id = data.get("start_ident")
+    airports = data.get("Ports")
 
-    return jsonify({"airport_id": selected})
+    if not airports:
+        airports = list_random_airports()
+
+    if not any(a["ident"] == start_id for a in airports):
+        return jsonify({"error": "Invalid start airport"}), 400
+
+    dest = engine.select_destination(start_id, airports)
 
 
+    return jsonify({
+        "start_airport_id": start_id,
+        "dest_airport": dest
+    })
+
+
+@app.route("/api/routes")
+def api_routes():
+    data = request.get_json()
+    airports = data.get("airports")
+    start_id = data.get("start_airport_id")
+    dest = data.get("dest_airport")
+
+    if not airports or not start_id or not dest:
+        return jsonify({"error": "Missing start/destination"}), 400
+
+    routes = engine.generate_routes(
+        selectedAirports=airports,
+        start_airport_id=start_id,
+        dest_airport_id=dest["ident"],
+        n_routes=4
+    )
+
+    simple_routes = []
+    for i, r in enumerate(routes, 1):
+        path = [s["ident"] for s in r["stops"]]
+        simple_routes.append({
+            "index": i,
+            "navy_meets": r["navy_meets"],
+            "path": path
+        })
+
+    return jsonify({
+        "start_airport_id": start_id,
+        "dest_airport": dest,
+        "routes": simple_routes
+    })
+
+@app.route("/api/choose-route", methods=["POST"])
+def api_choose_route():
+    data = request.get_json()
+    idx = data.get("route_index")
+
+    routes = data.get("routes")
+    if not routes:
+        return jsonify({"error": "No routes generated yet"}), 400
+
+    try:
+        idx = int(idx)
+    except (TypeError, ValueError):
+        return jsonify({"error": "Invalid route index"}), 400
+
+    if not (1 <= idx <= len(routes)):
+        return jsonify({"error": "Route index out of range"}), 400
+
+    chosen = routes[idx - 1]
+
+    return jsonify({
+        "chosen_index": idx,
+        "chosen_path": [s["ident"] for s in chosen["stops"]],
+        "navy_meets": chosen["navy_meets"]
+    })
+
+
+
+@app.route("/api/game-state")
+def api_game_state():
+    data = request.get_json()
+    pirate_id = data.get("pirate_id")
+    route = data.get("chosen_route")
+    if not pirate_id or not route:
+        return jsonify({"error": "Missing game state"}), 400
+
+    p = get_pirate(pirate_id)
+
+    return jsonify({
+        "pirate": {
+            "id": pirate_id,
+            "name": p["pirate_name"],
+            "boat": p["boat_name"]
+        },
+        "life": p["curr_life"],
+        "gold": p["curr_gold"],
+        "encounters_done": p["encounter_index"],
+        "total_encounters": route["navy_meets"],
+        "route_stops": route["stops"]
+    })
+
+
+@app.route("/api/next-encounter", methods=["POST"])
+def api_next_encounter():
+    data = request.get_json()
+    pirate_id = data.get("pirate_id")
+    route = data.get("chosen_route")
+    start_id = data.get("start_id")
+    dest = data.get("dest_ident")
+
+    if not pirate_id or not route:
+        return jsonify({"error": "Missing game state"}), 400
+
+    strategy = data.get("strategy")
+
+    if strategy not in ("fight", "trade"):
+        return jsonify({"error": "Invalid strategy"}), 400
+
+    idx = data.get("encounter_index", 0)
+    gold = data.get("curr_gold")
+    life = data.get("curr_life")
+    steps_log = data.get("steps_log", [])
+
+    total = route["navy_meets"]
+
+    if idx >= total or life <= 0:
+        return jsonify({"error": "No more encounters"}), 400
+
+    gold, life, outcome = engine._encounter(strategy, gold, life)
+    steps_log.append(outcome)
+
+    idx += 1
+
+    done = (idx >= total) or (life <= 0)
+
+    if done:
+        update_pirate_stats(pirate_id, gold, life)
+
+        chosen_route_simple = {
+            "stops": [s["ident"] for s in route["stops"]],
+            "navy_meets": route["navy_meets"]
+        }
+
+        result_str = "success" if life > 0 else "death"
+
+        save_game_run(
+            pirate_id=pirate_id,
+            start_airport_id=start_id,
+            dest_airport_id=dest["ident"],
+            chosen_route=chosen_route_simple,
+            result=result_str,
+            final_gold=gold,
+            final_life=life
+        )
+
+    return jsonify({
+        "outcome": outcome,
+        "life": life,
+        "gold": gold,
+        "encounters_done": idx,
+        "total_encounters": total,
+        "done": done
+    })
+
+@app.route("/api/summary")
+def api_summary():
+    data = request.get_json()
+    pirate_id = data.get("pirate_id")
+    p = get_pirate(pirate_id)
+
+    game_summary  =get_Summary(pirate_id)
+
+    summary = {
+        "pirate_name": p["pirate_name"],
+        "boat_name": p["boat_name"],
+        "start_airport_id": game_summary["start_airport_id"],
+        "dest_airport": game_summary["dest_airport_id"],
+        "route": game_summary["chosen_route"],
+        "final_gold": game_summary["final_gold"],
+        "final_life": game_summary["final_life"],
+        "result": game_summary["result"]
+    }
+    if not summary:
+        return jsonify({"error": "No summary"}), 400
+    return jsonify(summary)
 
 
 

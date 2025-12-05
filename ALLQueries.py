@@ -73,3 +73,16 @@ def save_game_run(pirate_id: int, start_airport_id: str, dest_airport_id: str,
             INSERT INTO game_runs (pirate_id, start_airport_id, dest_airport_id, chosen_route, result, final_gold, final_life)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
         """, (pirate_id, start_airport_id, dest_airport_id, json.dumps(chosen_route), result, final_gold, final_life))
+
+def get_Summary(pirate_id: int):
+    with db.get_db() as (conn):
+        cur = conn.cursor(dictionary=True)
+        cur.execute("""
+            SELECT p.start_airport_id, p.dest_airport_id, p.chosen_route, p.result, p.final_gold, p.final_life
+            FROM game_runs p 
+            WHERE p.pirate_id=%s
+        """, (pirate_id,))
+        row = cur.fetchone()
+        if not row:
+            raise ValueError("Pirate not found")
+        return row
