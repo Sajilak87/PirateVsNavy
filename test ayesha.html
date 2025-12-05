@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <title>Pirate vs Navy – Welcome</title>
 
-    <!-- Common styles -->
     <link rel="stylesheet" href="Css/GameCss.css">
-    <!-- My custom styles for this page -->
     <link rel="stylesheet" href="Css/WelcomeMsg.css">
 
-    <!-- JS for this page -->
     <script src="Js/WelcomeMsg.js" defer></script>
 
     <script>
@@ -22,7 +19,6 @@
 
 <body class="welcome-screen">
 
-<!-- TOP BLUE BAR -->
 <div id="ui-top">
     <div class="top-left-group">
         <button id="backBtn">⟵</button>
@@ -32,7 +28,6 @@
     <div id="username">User Name</div>
 </div>
 
-<!--  WELCOME -->
 <main class="app-frame">
     <section class="welcome-panel">
         <h1 class="welcome-title">⚓ Pirates vs Navy ⚓</h1>
@@ -45,13 +40,19 @@
             ⚓ Steady your heart — adventure calls upon you!<br><br>
             Are you ready to begin your journey?
         </p>
+
+        <button id="startBtn" class="welcome-btn">Start Adventure!</button>
+
     </section>
 
 </main>
 
+<div id="ship" class="ship-icon"></div>
+
+<div id="popup" class="ship-popup">
+    <p>A waypoint reached!</p>
+    <button id="closePopup">Continue</button>
+</div>
+
 </body>
-
 </html>
-
-
-
