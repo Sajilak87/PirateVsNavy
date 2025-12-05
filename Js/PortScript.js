@@ -41,8 +41,6 @@ window.addEventListener("load",() => {
     frag.appendChild(port);
   }
 
-  portsContainer.appendChild(port);
+  portsContainer.appendChild(frag);
 
-    }
-
-});
+})
