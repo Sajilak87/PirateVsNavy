@@ -22,3 +22,20 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+
+.icon-btn {
+    background: #386fa4;
+    border: none;
+    padding: 10px 14px;
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.username-box {
+    background: #2f4b7d;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
