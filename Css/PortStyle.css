@@ -13,3 +13,12 @@ body {
     align-items: center;
 }
 
+header {
+    width: 100%;
+    padding: 12px;
+    background: #1c3d5e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
