@@ -72,3 +72,12 @@ header {
     width: 60%;
 }
 
+.route-list li {
+    background: #1c273a;
+    border: 3px solid #4e709d;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+
+}
+
