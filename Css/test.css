@@ -1,0 +1,185 @@
+/* Page background for this screen */
+body.welcome-screen {
+    margin: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    background: #161616; /* dark night */
+    color: #ffffff;
+    /* MODIFIED: Add a background image (e.g., a dark sea texture) */
+    background-image: url('Images/dark_sea_texture.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Area under the top bar */
+.app-frame {
+    width: 100%;
+    min-height: calc(100vh - 80px);  /* rest of the page */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 70px 0 40px;
+    box-sizing: border-box;
+    /* MODIFIED: Add a dark overlay so text is readable */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* GOLD TREASURE WELCOME BOX */
+.welcome-panel,
+.welcome-box {
+    max-width: 650px;
+    width: 90%;
+    background: linear-gradient(145deg, #3b2b06, #7a5a12); /* gold / wood */
+    border-radius: 20px;
+    border: 4px solid #e6c45c;
+    box-shadow:
+        0 0 25px rgba(255, 215, 0, 0.4),
+        inset 0 0 18px rgba(0, 0, 0, 0.6);
+    padding: 35px 45px;
+    text-align: center;
+    /* MODIFIED: Animation to make the box pop in */
+    transform: scale(0.8);
+    opacity: 0;
+    animation: panelPopIn 0.8s ease-out 0.5s forwards;
+}
+
+/* Title text */
+.welcome-title {
+    color: #ffe58a;
+    font-size: 34px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* Message text */
+/* Added small animation to the text */
+.welcome-text {
+    color: #fff4cc;
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    /* MODIFIED: Delay text animation slightly more */
+    animation: fadeIn 2.5s forwards 1.2s;
+}
+
+/* Start button */
+.welcome-btn {
+    background: linear-gradient(145deg, #ffe58a, #d8b347);
+    color: #4a3500;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 2px solid #fff2a8;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    /* MODIFIED: Slightly enlarge and darken text on hover */
+    &:hover {
+        background: linear-gradient(145deg, #d8b347, #ffe58a);
+        transform: scale(1.05);
+        color: #000000;
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+}
+
+/* --- MODIFIED: NEW INTERFACE ELEMENTS STYLES (Placeholder elements) --- */
+
+/* Ship Icon - starts hidden */
+.ship-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px; /* Size of the icon */
+    height: 60px;
+    font-size: 40px; /* Use an emoji as the icon */
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: left 1.5s ease-in-out, top 1.5s ease-in-out, transform 0.5s;
+    /* MODIFIED: Add a rotation to make it feel like it's sailing */
+    animation: rocking 3s infinite alternate;
+}
+
+/* Popup message near the ship */
+.ship-popup {
+    position: absolute;
+    background: #004c99; /* Navy blue background */
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #66b3ff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 101;
+    display: none; /* Hidden by default */
+    width: 200px;
+    text-align: center;
+    /* Position relative to the ship (adjust in JS) */
+    transform: translate(-50%, -120%);
+}
+
+.ship-popup p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.ship-popup #closePopup {
+    background: #3385ff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ship-popup #closePopup:hover {
+    background: #005ce6;
+}
+
+/* --- KEYFRAMES --- */
+
+/* Small screens */
+@media (max-width: 700px) {
+    .app-frame {
+        padding: 40px 0 30px;
+    }
+
+    .welcome-panel,
+    .welcome-box {
+        padding: 24px 18px;
+    }
+
+    .welcome-title {
+        font-size: 26px;
+    }
+
+    .welcome-text {
+        font-size: 17px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* MODIFIED: Keyframes for the Panel */
+@keyframes panelPopIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* MODIFIED: Keyframes for the Ship Rocking */
+@keyframes rocking {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(3deg); }
+}
