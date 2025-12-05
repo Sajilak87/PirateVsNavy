@@ -14,9 +14,19 @@
   align-items: center;
   z-index: 3000;
 }
-
 /* ============================================================
-   POPUP BOX (dark style matching HOME)
+   POPUP IMAGE
+   ============================================================ */
+
+/* Image inside popup */
+.popup-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+/* ============================================================
+   POPUP BOX
    ============================================================ */
 .popup-box {
   width: 330px;
@@ -32,6 +42,7 @@
    TITLE
    ============================================================ */
 .popup-title {
+  position: page;
   font-size: 22px;
   color: #64b5f6;
   margin-bottom: 20px;
@@ -78,7 +89,7 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  position: absolute;
+  position: marker;
   bottom: 12px;
   right: 12px;
   transition: 0.15s;

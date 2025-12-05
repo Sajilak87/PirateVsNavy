@@ -33,7 +33,7 @@ body {
   border: none;
   padding: 8px 12px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
@@ -44,7 +44,7 @@ body {
 /* -------- Header -------- */
 .site-header {
   background: #1c3d5e;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,9 +58,11 @@ body {
 
 /* -------- Title -------- */
 .title {
-  margin: 30px 0;
+  margin: 10px 0;
   font-size: 40px;
   font-weight: bold;
+  font-style: initial;
+  color: gold;
 }
 
 /* -------- Main Hero Section -------- */
@@ -72,13 +74,26 @@ body {
 
 .hero {
   position: relative;
-}
-
-.hero img {
   width: 100%;
-  border-radius: 15px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Full video background */
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Buttons stay on top */
 .btn {
   position: absolute;
   bottom: 20px;
