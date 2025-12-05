@@ -39,3 +39,11 @@ header {
     border-radius: 8px;
     font-weight: bold;
 }
+
+#mapContainer {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
