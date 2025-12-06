@@ -103,3 +103,12 @@ header {
     justify-content: space-between;
 }
 
+.icon-btn {
+    border: none;
+    background: #4ea7ff;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+}
