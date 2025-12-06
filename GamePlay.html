@@ -35,7 +35,6 @@
     <img id="ship" src="Images/ship.png" alt="">
 </div>
 
-<!-- ENCOUNTER POPUP -->
 <div id="popup">
     <div id="popup-header">
         <span>Encounter</span>
@@ -44,11 +43,19 @@
 
     <div id="popup-body">
         <div class="stat">
-            ❤️ Enemy HP: <div class="bar"><div class="fill red"></div></div>
+            ❤️ Enemy HP:
+            <div class="bar">
+                <div class="fill red" id="enemyHpFill"></div>
+            </div>
         </div>
         <div class="stat">
-            🟦 Loot Chance: <div class="bar"><div class="fill blue"></div></div>
+            🟦 Loot Chance:
+            <div class="bar">
+                <div class="fill blue" id="lootFill"></div>
+            </div>
         </div>
+
+        <p id="outcomeMsg"></p>
 
         <div id="popup-buttons">
             <button class="game-btn fight">Fight</button>

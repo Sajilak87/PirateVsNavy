@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from ALLQueries import (
     create_pirate, get_pirate,list_boats,list_random_airports,update_pirate_stats,save_game_run,get_Summary
@@ -9,6 +10,8 @@ engine = GameEngine()
 
 app = Flask(__name__)
 
+
+CORS(app)
 
 @app.post("/api/create_pirate")
 def create_pirate_api():
@@ -129,9 +132,9 @@ def api_choose_route():
 
 @app.route("/api/game-state")
 def api_game_state():
-    data = request.get_json()
-    pirate_id = data.get("pirate_id")
-    route = data.get("chosen_route")
+
+    pirate_id = 1
+    route = 3
     if not pirate_id or not route:
         return jsonify({"error": "Missing game state"}), 400
 
@@ -143,11 +146,8 @@ def api_game_state():
             "name": p["pirate_name"],
             "boat": p["boat_name"]
         },
-        "life": p["curr_life"],
-        "gold": p["curr_gold"],
-        "encounters_done": p["encounter_index"],
-        "total_encounters": route["navy_meets"],
-        "route_stops": route["stops"]
+        "life": p["life"],
+        "gold": p["gold"]
     })
 
 
