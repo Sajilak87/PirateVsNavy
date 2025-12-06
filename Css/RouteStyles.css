@@ -4,3 +4,42 @@
     margin-top: 30px;
     width: 60%;
 }
+
+.route-list li {
+    background: #ffffff;
+    border: 3px solid #22306b;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.route-list {
+    background: #293b8f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon-button {
+    border: none;
+    background: #4ea7ff;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.username-box {
+    background: #8ff0a4;
+    color: #003b1f;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
