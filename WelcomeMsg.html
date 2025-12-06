@@ -9,14 +9,18 @@
     <!-- My custom styles for this page -->
     <link rel="stylesheet" href="Css/WelcomeMsg.css">
 
-    <!-- JS for this page -->
-    <script src="Js/WelcomeMsg.js" defer></script>
-
     <script>
-        // simple navigation back to Home page
+        // navigation back to Home page
         function goHome() {
             window.location.href = "Home.html";
         }
+
+        //  After 5 seconds, go to Available Boats page
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                window.location.href = "AvailableBoats.html";
+            }, 3000);
+        });
     </script>
 </head>
 
@@ -46,12 +50,7 @@
             Are you ready to begin your journey?
         </p>
     </section>
-
 </main>
 
 </body>
-
 </html>
-
-
-

@@ -48,18 +48,16 @@ if (homeBtn) {
     });
 }
 
-// (optional) Back button logic
+//  Back button logic
 const backBtn = document.getElementById("backBtn");
 if (backBtn) {
     backBtn.addEventListener("click", function () {
         window.history.back();
     });
 }
-
+// directed to the AvailableBoats page
 document.addEventListener("DOMContentLoaded", () => {
-    // Wait 5 seconds
     setTimeout(() => {
-        // Redirect to boats page
-        window.location.href = "Boats.html";
-    }, 5000);
+        window.location.href = "AvailableBoats.html";
+    }, 3000);
 });

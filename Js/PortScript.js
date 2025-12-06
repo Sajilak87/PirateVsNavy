@@ -1,4 +1,4 @@
-window.addEventListener("load",() => {
+window.addEventListener("load", async () => {
  let portsContainer = document.getElementById("ports");
  const mapContainer = document.getElementById("mapContainer") || document.body;
 
@@ -21,26 +21,69 @@ window.addEventListener("load",() => {
       parent.style.position = "relative";
     }
   }
+
+  let airports = [];
+  try {
+    const res = await fetch("/api/airports");
+    airports = await res.json();
+  } catch (err) {
+    console.error("Failed to fetch airports:", err);
+  }
+
   const frag = document.createDocumentFragment();
-  for (let i = 0; i < 10; i++) {
+
+  airports.forEach((airport, i) => {
     const port = document.createElement("div");
     port.classList.add("port");
-
+    port.style.position = "absolute";
     port.style.pointerEvents = "auto";
 
     const x = Math.random() * 90 + 5;
     const y = Math.random() * 90 + 5;
-
     port.style.left = x + "%";
     port.style.top = y + "%";
 
-    port.addEventListener("Click", (e) => {
+    port.title = airport.name;
+
+    port.addEventListener("Click", async (e) => {
       e.stopPropagation();
-      alert(`Port Selected! (#${i + 1})`);
+      alert(`Port Selected! (#${i + 1} - ${airport.ident})`);
+      try {
+        const startRes = await fetch("/api/set-start", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            start_ident: airport.ident,
+            Ports: airports
+          })
+        });
+
+        const startData = await startRes.json();
+        console.log("Start airport set:", startData);
+
+        const routesRes = await fetch("/api/routes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            airports,
+            start_airport_id: startData.start_airport_id,
+            dest_airport: startData.dest_airport
+          })
+        });
+
+        const routesData = await routesRes.json();
+        console.log("Generated routes:", routesData);
+        alert(`Routes fetched! Check console for details.`);
+
+      } catch (err) {
+        console.error("API error:", err);
+        alert("Error calling APIs. Check console.");
+      }
     });
+
     frag.appendChild(port);
-  }
+  });
 
   portsContainer.appendChild(frag);
 
-})
+});
