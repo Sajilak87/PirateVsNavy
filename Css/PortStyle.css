@@ -15,10 +15,11 @@ body {
 
 header {
     width: 100%;
-    padding: 12px;
+    padding: 12px 18px;
     background: #1c3d5e;
     color: white;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     justify-content: space-between;
 }
