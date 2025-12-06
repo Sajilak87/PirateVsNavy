@@ -131,11 +131,11 @@ def api_choose_route():
 
 
 
-@app.route("/api/game-state")
+@app.post("/api/game-state")
 def api_game_state():
-
-    pirate_id = 1
-    route = 3
+    data = request.get_json()
+    pirate_id = data.get("pirate_id")
+    route = data.get("chosen_route")
     if not pirate_id or not route:
         return jsonify({"error": "Missing game state"}), 400
 
@@ -220,7 +220,7 @@ def api_summary():
     pirate_id = data.get("pirate_id")
     p = get_pirate(pirate_id)
 
-    game_summary  =get_Summary(pirate_id)
+    game_summary  = get_Summary(pirate_id)
 
     summary = {
         "pirate_name": p["pirate_name"],

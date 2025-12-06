@@ -23,31 +23,18 @@
 <div class="game-frame">
     <main class="game-content">
         <div class="map-wrapper">
-            <div class="map-island">
-                <svg class="route-svg" viewBox="0 0 400 220">
-                    <path d="M20 170 C80 140, 90 90, 150 110
-                             S230 80, 250 60
-                             S310 70, 360 120"
-                          fill="none"
-                          stroke="#00a9a5"
-                          stroke-width="6"
-                          stroke-linecap="round"
-                          stroke-dasharray="6 14" />
+            <div id="map-preview">
+                <div class="point" style="top: 260px; left: 80px;"></div>
+                <div class="point" style="top: 150px; left: 220px;"></div>
+                <div class="point" style="top: 200px; left: 380px;"></div>
+                <div class="point" style="top: 120px; left: 550px;"></div>
+                <div class="point" style="top: 240px; left: 720px;"></div>
 
-                    <circle cx="105" cy="105" r="7" fill="#e94a4a"/>
-                    <circle cx="190" cy="90"  r="7" fill="#e94a4a"/>
-                    <circle cx="285" cy="95"  r="7" fill="#e94a4a"/>
-                </svg>
-
-                <img src="Images/pirate-ship.png" alt="Ship"
-                     class="ship ship-1">
-                <img src="Images/pirate-ship.png" alt="Ship"
-                     class="ship ship-2">
-                <img src="Images/pirate-ship.png" alt="Ship"
-                     class="ship ship-3">
-
-                <div class="start-marker"></div>
-                <div class="treasure-marker"></div>
+                <img src="Images/pirate-ship.png" alt="Ship" class="preview-ship ship-1">
+                <img src="Images/pirate-ship.png" alt="Ship" class="preview-ship ship-2">
+                <img src="Images/pirate-ship.png" alt="Ship" class="preview-ship ship-3">
+                <img src="Images/pirate-ship.png" alt="Ship" class="preview-ship ship-4">
+                <img src="Images/pirate-ship.png" alt="Ship" class="preview-ship ship-5">
             </div>
         </div>
     </main>
@@ -56,5 +43,6 @@
         <button class="start-button">Adventure Begins</button>
     </footer>
 </div>
+
 </body>
 </html>
