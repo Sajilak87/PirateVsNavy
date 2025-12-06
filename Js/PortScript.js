@@ -33,6 +33,10 @@ window.addEventListener("load", async () => {
   const frag = document.createDocumentFragment();
 
   airports.forEach((airport, i) => {
+    const port = document.createElement("div");
+    port.classList.add("port");
+    port.style.position = "absolute";
+    port.style.pointerEvents = "auto";
 
 
 
