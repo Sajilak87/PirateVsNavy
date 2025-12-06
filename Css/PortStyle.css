@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: "Trebuchet MS", Arial;
+    font-family: "Trebuchet MS", Arial, sans-serif;
     background: #222;
     color: white;
 }
@@ -30,16 +30,6 @@ header {
     font-weight: bold;
 }
 
-.top-bar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    background: #f4f4f4;
-    border-bottom: 2px solid #ddd;
-}
-
 .icon-Button {
     background: #386fa4;
     border: none;
@@ -60,7 +50,7 @@ header {
 #mapContainer {
     position: relative;
     width: 80%;
-    max-width: 900px;
+    max-width: 837px;
     margin-top: 20px;
 }
 
