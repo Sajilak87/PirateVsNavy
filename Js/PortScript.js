@@ -30,12 +30,14 @@ window.addEventListener("load", async () => {
     console.error("Failed to fetch airports:", err);
   }
 
-
-
   const frag = document.createDocumentFragment();
-  for (let i = 0; i < 10; i++) {
-    const port = document.createElement("div");
-    port.classList.add("port");
+
+  airports.forEach((airport, i) => {
+
+
+
+  }
+
 
     port.style.pointerEvents = "auto";
 
