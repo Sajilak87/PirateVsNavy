@@ -23,6 +23,10 @@ window.addEventListener("load", async () => {
   }
 
   let airports = [];
+  try {
+    const res = await fetch("/api/airports");
+    airports = await res.json();
+
 
 
   const frag = document.createDocumentFragment();
