@@ -64,8 +64,8 @@ async function loadBoats() {
             const li = document.createElement("li");
             li.innerHTML = `
                 <span class="boat-number">${index + 1}.</span>
-                <span class="boat-name">${boat.boat_name}</span>
-                <span class="boat-stats">(Life ${boat.life}, Gold ${boat.gold})</span>
+                <span class="boat-name">${boat.name}</span>
+                <span class="boat-stats">(Life ${boat.base_life}, Gold ${boat.base_gold})</span>
             `;
             listContainer.appendChild(li);
         });
