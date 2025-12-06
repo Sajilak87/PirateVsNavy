@@ -126,6 +126,13 @@ header {
     font-weight: bold;
 }
 
+#mapContainer {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
 .port {
     position: absolute;
     width: 18px;
