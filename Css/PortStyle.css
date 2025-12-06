@@ -120,3 +120,14 @@ header {
     border-radius: 8px;
     font-weight: bold;
 }
+
+.port {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: red;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
