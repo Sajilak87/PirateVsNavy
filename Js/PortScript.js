@@ -49,6 +49,17 @@ window.addEventListener("load", async () => {
       e.stopPropagation();
       alert(`Port Selected! (#${i + 1} - ${airport.ident})`);
 
+      try {
+        const startRes = await fetch("/api/set-start", {
+        method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            start_ident: airport.ident,
+            Ports: airports
+          })
+        });
+
+
 
 
   }
