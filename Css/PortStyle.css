@@ -7,7 +7,6 @@ body {
 
 .container {
     width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,24 +17,23 @@ header {
     padding: 12px 18px;
     background: #1c3d5e;
     color: white;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.header-right {
+.header-left {
     display: flex;
     align-items: center;
-    gap: 12px;
-    justify-self: end;
+    gap: 10px;
 }
 
 header h1 {
     margin: 0;
     text-align: center;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
+    flex: 1;
 }
 
 .page-title {
@@ -93,13 +91,14 @@ main {
 
 .port {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     background: red;
     border-radius: 50%;
     border: 2px solid black;
     cursor: pointer;
-    box-shadow: 0 0 12px red;
+    box-shadow: 0 0 10px red;
+    transition: 0.15s ease;
 }
 
 .port:hover {
@@ -122,17 +121,11 @@ main {
 
 }
 
-.route-list li a {
-   color: #64b5f6;
-   text-decoration: none;
+.port:hover {
+    transform: scale(1.25);
 }
 
-.container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.route-list {
 }
 
 header {
@@ -145,7 +138,7 @@ header {
     justify-content: space-between;
 }
 
-.icon-Button {
+.icon-btn {
     border: none;
     background: #4ea7ff;
     color: white;
