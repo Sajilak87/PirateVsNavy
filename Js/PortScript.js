@@ -58,6 +58,19 @@ window.addEventListener("load", async () => {
           })
         });
 
+        const startData = await startRes.json();
+        console.log("Start airport set:", startData);
+
+        const routesRes = await fetch("/api/routes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            airports,
+            start_airport_id: startData.start_airport_id,
+            dest_airport: startData.dest_airport
+          })
+        });
+
 
 
   }
