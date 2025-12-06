@@ -70,9 +70,18 @@ function drawPoints() {
     });
 }
 
-// ----- INITIAL GAME STATE FROM BACKEND -----
 function loadGameState() {
-    fetch("http://127.0.0.1:5000/api/game-state")
+    const pirateId = Number(sessionStorage.getItem("pirateId"));
+    const chosenRoute = sessionStorage.getItem("chosenRoute");
+
+    fetch("http://127.0.0.1:5000/api/game-state", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            pirate_id: pirateId,
+            chosen_route: chosenRoute
+        })
+    })
         .then(r => r.json())
         .then(data => {
             if (data.error) {
@@ -139,7 +148,7 @@ function closePopup() {
 
 function sendChoice(strategy) {
     // strategy = "fight" or "trade"
-    fetch("/api/next-encounter", {
+    fetch("http://127.0.0.1:5000/api/next-encounter", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({strategy})
@@ -155,15 +164,12 @@ function sendChoice(strategy) {
             gameFinished = data.done;
 
             const out = data.outcome;
-            // Example from backend: out = { mode, life_loss, gold_delta }
             outcomeMsg.textContent =
                 `${out.mode.toUpperCase()} | Life -${out.life_loss}, Gold ${out.gold_delta >= 0 ? "+" : ""}${out.gold_delta}`;
 
-            // Just a simple visual: shrink HP bar, change loot
             enemyHpFill.style.width = Math.max(0, 100 - out.life_loss * 2) + "%";
             lootFill.style.width = (50 + out.gold_delta) + "%";
 
-            // After short delay, close popup and move on
             setTimeout(() => {
                 closePopup();
             }, 1000);
@@ -174,7 +180,6 @@ function sendChoice(strategy) {
         });
 }
 
-// ----- EVENT HANDLERS -----
 closePopupBtn.onclick = closePopup;
 
 fightBtn.addEventListener("click", function () {
