@@ -46,11 +46,11 @@ window.addEventListener("load", async () => {
 
     port.title = airport.name;
 
-    port.addEventListener("Click", async (e) => {
+    port.addEventListener("click", async (e) => {
       e.stopPropagation();
       alert(`Port Selected! (#${i + 1} - ${airport.ident})`);
       try {
-        const startRes = await fetch("/api/set-start", {
+        const startRes = await fetch("http://127.0.0.1:5000/api/airports", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -62,7 +62,7 @@ window.addEventListener("load", async () => {
         const startData = await startRes.json();
         console.log("Start airport set:", startData);
 
-        const routesRes = await fetch("/api/routes", {
+        const routesRes = await fetch("http://127.0.0.1:5000/api/routes", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -73,18 +73,19 @@ window.addEventListener("load", async () => {
         });
 
         const routesData = await routesRes.json();
-        console.log("Generated routes:", routesData);
-        alert(`Routes fetched! Check console for details.`);
+        console.log("Routes:", routesData);
 
       } catch (err) {
-        console.error("API error:", err);
-        alert("Error calling APIs. Check console.");
-      }
-    });
+                console.error("Error selecting port or fetching routes:", err);
+            }
+
+    })
+
 
     frag.appendChild(port);
   });
 
   portsContainer.appendChild(frag);
 
+ };
 });
