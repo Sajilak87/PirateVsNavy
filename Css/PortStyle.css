@@ -56,11 +56,18 @@ header h1 {
     transition: 0.2s ease;
 }
 
+.icon-Button:hover {
+    background: #1a8be6;
+    transform: scale(1.08);
+}
+
 .username-box {
-    background: #2f4b7d;
-    padding: 8px 16px;
+    background: #8ff0a4;
+    color: #003b1f;
+    padding: 8px 14px;
     border-radius: 8px;
     font-weight: bold;
+    font-size: 16px;
 }
 
 #mapContainer {
