@@ -98,7 +98,7 @@ body.welcome-screen {
     margin: 0;
     font-family: Poppins, Arial, sans-serif;
 
-    /* 🔥 Add background image */
+    /*  background image */
     background: url("../Images/welcome.png") no-repeat center center fixed;
     background-size: cover;
 }
