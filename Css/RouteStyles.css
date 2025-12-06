@@ -6,22 +6,38 @@
 }
 
 .route-list li {
-    background: #ffffff;
-    border: 3px solid #22306b;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
+    background: #1c273a;
+    border: 3px solid #4e709d;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
     text-align: center;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .route-list {
-    background: #293b8f;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    box-shadow: 0 0 12px #000;
+    transition: 0.2s ease-in-out;
+}
+
+.route-list li a {
+    color: #64b5f6;
+    text-decoration: none;
+}
+
+.route-list li:hover {
+    background: #2a3f57;
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 18px #111;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4ff;
 }
 
 .icon-button {
