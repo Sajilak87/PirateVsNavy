@@ -7,8 +7,10 @@
 
 body {
     margin: 0;
-    background: #222;
-    color: white;
+    font-family: Poppins, Arial, sans-serif;
+    background: url("../Images/Map_background1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
 }
 
 #ui-top {
@@ -43,128 +45,124 @@ body {
 }
 
 .game-frame {
+    width: 1200px;
+    margin: 24px auto 40px;
+    padding-bottom: 10px;
     position: relative;
-    width: 960px;
-    max-width: 96vw;
-    aspect-ratio: 16 / 10;
-    background: #ffffff;
-    color: #111;
-    border: 6px solid #264796;
-    border-radius: 18px;
-    padding: 18px;
-    margin: 24px auto;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
 }
 
 .game-frame::before {
-    content: "";
-    position: absolute;
-    inset: 16px;
-    border: 5px solid #3f6bde;
-    border-radius: 14px;
-    pointer-events: none;
+    content: none;
 }
 
 .game-content {
-    position: relative;
-    z-index: 1;
-    height: calc(100% - 110px);
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .map-wrapper {
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.map-island {
+#map-preview {
+    width: 1200px;
+    height: 700px;
+    border: 4px solid #333;
+    background: url("../Images/Pirate_map2.jpg") center center;
+    background-size: cover;
+    margin: 0 auto;
     position: relative;
-    width: 80%;
-    height: 80%;
-    background: #fffbe2;
-    border: 5px solid #2d2d2d;
-    border-radius: 55% 45% 60% 40% / 55% 45% 60% 40%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #000;
     overflow: hidden;
 }
 
-.route-svg {
-    position: absolute;
-    inset: 12% 10%;
-    width: 80%;
-    height: 76%;
-}
-
-.ship {
-    position: absolute;
-    width: 80px;
-    transform: translate(-50%, -50%);
-    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.25));
-}
-
-.ship-1 {
-    left: 28%;
-    top: 58%;
-}
-
-.ship-2 {
-    left: 54%;
-    top: 32%;
-}
-
-.ship-3 {
-    left: 65%;
-    top: 65%;
-}
-
-.start-marker,
-.treasure-marker {
-    position: absolute;
-    width: 28px;
-    height: 28px;
+.point {
+    width: 16px;
+    height: 16px;
+    background: red;
     border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 12px red;
 }
 
-.start-marker {
-    left: 10%;
-    top: 65%;
-    background: #f7843e;
-    border: 4px solid #b4411c;
+.preview-ship {
+    position: absolute;
+    width: 70px;
+    transform: translate(-50%, -100%);
+
+    filter:
+        drop-shadow(0 0 6px rgba(0, 0, 0, 0.8))
+        drop-shadow(0 0 6px rgba(128, 0, 32, 0.9));
+
+    animation:
+        bob 1.2s ease-in-out infinite,
+        shipGlow 2s ease-in-out infinite;
 }
 
-.treasure-marker {
-    right: 7%;
-    top: 45%;
-    background: #ffe861;
-    border: 4px solid #f2b701;
-    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.5);
+.ship-1 { top: 260px; left:  80px; }
+.ship-2 { top: 150px; left: 220px; }
+.ship-3 { top: 200px; left: 380px; }
+.ship-4 { top: 120px; left: 550px; }
+.ship-5 { top: 240px; left: 720px; }
+
+@keyframes bob {
+    0%   { transform: translate(-50%, -100%); }
+    50%  { transform: translate(-50%, -110%); }
+    100% { transform: translate(-50%, -100%); }
 }
+
+@keyframes shipGlow {
+    0% {
+        filter:
+            drop-shadow(0 0 6px rgba(0, 0, 0, 0.8))
+            drop-shadow(0 0 6px rgba(128, 0, 32, 0.8));
+    }
+    50% {
+        filter:
+            drop-shadow(0 0 6px rgba(0, 0, 0, 0.8))
+            drop-shadow(0 0 16px rgba(180, 0, 40, 1));
+    }
+    100% {
+        filter:
+            drop-shadow(0 0 6px rgba(0, 0, 0, 0.8))
+            drop-shadow(0 0 6px rgba(128, 0, 32, 0.8));
+    }
+}
+
 
 .game-footer {
-    position: absolute;
-    right: 40px;
-    bottom: 26px;
-    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 12px;
 }
 
 .start-button {
-    padding: 10px 30px;
+    padding: 12px 34px;
     border-radius: 999px;
-    border: 3px solid #264796;
-    background: #c5ffb6;
+    background: linear-gradient(145deg, #ffe58a, #d8b347);
+    border: 3px solid #e6c45c;
+    color: #4a3500;
+    font-size: 18px;
     font-weight: 700;
-    color: #225b30;
-    font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-shadow:
+        0 0 18px rgba(255, 215, 0, 0.7),
+        inset 0 0 10px rgba(0, 0, 0, 0.35);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .start-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 24px rgba(255, 235, 120, 0.9),
+        inset 0 0 12px rgba(0, 0, 0, 0.45);
 }
