@@ -1,86 +1,43 @@
-// const ship = document.getElementById("ship"); // Kept variable declaration but logic commented out
-// const popup = document.getElementById("popup");
-// const closePopupBtn = document.getElementById("closePopup");
-
-// --- MODIFIED: START BUTTON LOGIC ---
-const startBtn = document.getElementById("startBtn");
-
-function startAdventure() {
-    // Navigate to Boats page when the button is clicked.
-    window.location.href = "Boats.html";
-}
-
-if (startBtn) {
-    startBtn.addEventListener("click", startAdventure);
-}
-// ------------------------------------
-
-
-// --- ORIGINAL SHIP/POPUP LOGIC (COMMENTED OUT) ---
-/*
-// Coordinates of the points
-const points = [
-    { x: 80,  y: 260 },
-    { x: 220, y: 150 },
-    { x: 380, y: 200 },
-    { x: 550, y: 120 },
-    { x: 720, y: 240 }
-];
-
-let currentPoint = 0;
-
-function moveShip() {
-    if (currentPoint >= points.length) return;
-
-    const p = points[currentPoint];
-    ship.style.left = p.x + "px";
-    ship.style.top = p.y + "px";
-
-    setTimeout(showPopup, 1600); // wait for move animation
-}
-
-function showPopup() {
-    popup.style.display = "block";
-}
-
-function closePopup() {
-    popup.style.display = "none";
-    currentPoint++;
-    setTimeout(moveShip, 300);
-}
-
-closePopupBtn.onclick = closePopup;
-
-// Start animation
-setTimeout(moveShip, 700);
-*/
-// ------------------------------------
-
-
-// This runs after the HTML is parsed because of "defer"
-const homeBtn = document.getElementById("homeBtn");
-if (homeBtn) {
-    homeBtn.addEventListener("click", function () {
-        // Home.html is in the same folder as WelcomeMsg.html
-        window.location.href = "Home.html";
-    });
-}
-
-// (optional) Back button logic
-const backBtn = document.getElementById("backBtn");
-if (backBtn) {
-    backBtn.addEventListener("click", function () {
-        window.history.back();
-    });
-}
-
-// --- ORIGINAL 5-SECOND REDIRECT (COMMENTED OUT) ---
-/*
 document.addEventListener("DOMContentLoaded", () => {
-    // Wait 5 seconds
-    setTimeout(() => {
-        // Redirect to boats page
-        window.location.href = "Boats.html";
-    }, 5000);
+    // Home button
+    const homeBtn = document.getElementById("homeBtn");
+    if (homeBtn) {
+        homeBtn.addEventListener("click", () => {
+            window.location.href = "Home.html";
+        });
+    }
+
+    // Back button
+    const backBtn = document.getElementById("backBtn");
+    if (backBtn) {
+        backBtn.addEventListener("click", () => {
+            window.history.back();
+        });
+    }
+
+    // Choose boat
+    const chooseBtn = document.getElementById("chooseBoatBtn");
+    const boatNumberInput = document.getElementById("boatNumber");
+
+    if (chooseBtn && boatNumberInput) {
+        chooseBtn.addEventListener("click", () => {
+            const n = parseInt(boatNumberInput.value, 10);
+
+            if (Number.isNaN(n) || n < 1 || n > 4) {
+                alert("Please enter a boat number from 1 to 4.");
+                return;
+            }
+
+            // For now just show which boat was chosen.
+            // Later you can connect this to backend.
+            const names = [
+                "Sea Serpent",
+                "Black Gull",
+                "Crimson Tide",
+                "Iron Leviathan"
+            ];
+
+            alert("You chose: " + names[n - 1]);
+        });
+    }
 });
-*/

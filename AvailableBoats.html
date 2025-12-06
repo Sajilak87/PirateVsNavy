@@ -2,70 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Available Boats – Pirate vs Navy</title>
+    <title>Available Boats</title>
 
-    <!-- Common styles -->
+    <!-- Common CSS -->
     <link rel="stylesheet" href="Css/GameCss.css">
-    <!-- Page styles -->
+
+    <!-- Page-specific CSS -->
     <link rel="stylesheet" href="Css/AvailableBoats.css">
-
-
-
-
-    <script src="Js/Boats.js" defer></script>
 </head>
 
 <body class="boats-screen">
 
+<!-- TOP BAR -->
 <div id="ui-top">
     <div class="top-left-group">
         <button id="backBtn">⟵</button>
         <button id="homeBtn">🏠</button>
     </div>
-    <div id="username">User Name</div>
+    <div id="username">User</div>
 </div>
 
+<!-- MAIN CONTENT -->
 <main class="app-frame">
     <section id="boats-panel">
+
         <h1 class="boats-title">Available Boats</h1>
 
-        <ul class="boat-list">
-            <li>
-                <span class="boat-number">1.</span>
-                <span class="boat-name">Sea Serpent</span>
-                <span class="boat-stats">(Life 100, Gold 150)</span>
-            </li>
-            <li>
-                <span class="boat-number">2.</span>
-                <span class="boat-name">Black Gull</span>
-                <span class="boat-stats">(Life 120, Gold 120)</span>
-            </li>
-            <li>
-                <span class="boat-number">3.</span>
-                <span class="boat-name">Crimson Tide</span>
-                <span class="boat-stats">(Life 90, Gold 200)</span>
-            </li>
-            <li>
-                <span class="boat-number">4.</span>
-                <span class="boat-name">Iron Leviathan</span>
-                <span class="boat-stats">(Life 150, Gold 90)</span>
-            </li>
+        <!-- ⭐ THIS IS THE CORRECT API BOAT LIST -->
+        <ul class="boat-list" id="boatList">
+            <!-- Boats will be loaded from API -->
         </ul>
+        <!-- END OF DYNAMIC LIST -->
 
+        <!-- Choose boat section -->
         <div class="choose-boat">
             <h2>Choose your boat</h2>
 
-            <label for="boatNumber" class="choose-label">
-                Enter boat number:
-            </label>
+            <label class="choose-label" for="boatNumber">Enter boat number</label>
 
             <div class="choose-row">
-                <input type="number" id="boatNumber" min="1" max="4">
+                <input id="boatNumber" type="number" min="1" placeholder="1 - ?" />
                 <button id="chooseBoatBtn">Go</button>
             </div>
         </div>
+
     </section>
 </main>
+
+<!-- JAVASCRIPT -->
+<script src="Js/AvailableBoats.js" defer></script>
 
 </body>
 </html>
