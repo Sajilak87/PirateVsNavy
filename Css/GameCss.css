@@ -34,12 +34,11 @@ body {
     width: 1200px;
     height: 700px;
     border: 4px solid #333;
-    background: url("../Images/41598.jpg") center/cover;
+    background: url("../Images/Pirate_map1.png") center/cover;
     margin: 20px auto;
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 20px #000;
     border-radius: 12px;
+    box-shadow: 0 0 20px #000;
 }
 
 .point {
