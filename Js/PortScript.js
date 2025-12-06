@@ -1,3 +1,4 @@
+
 window.addEventListener("load", async () => {
  let portsContainer = document.getElementById("ports");
  const mapContainer = document.getElementById("mapContainer") || document.body;
@@ -10,7 +11,7 @@ window.addEventListener("load", async () => {
    portsContainer.style.inset = "0";
    portsContainer.style.pointerEvents = "none";
    mapContainer.appendChild(portsContainer);
- }
+
 
   const map = document.getElementById("map");
   if (!map) {
