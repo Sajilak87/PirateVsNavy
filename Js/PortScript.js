@@ -71,6 +71,14 @@ window.addEventListener("load", async () => {
           })
         });
 
+        const routesData = await routesRes.json();
+        console.log("Generated routes:", routesData);
+        alert(`Routes fetched! Check console for details.`);
+
+
+
+
+
 
 
   }
