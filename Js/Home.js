@@ -36,3 +36,33 @@ document.getElementById("startBtn").addEventListener("click", function () {
             };
         });
 });
+
+async function registerPirate(pirateName) {
+    const response = await fetch("http://127.0.0.1:5000/api/create_pirate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            pirate_name: pirateName
+        })
+    });
+
+    const data = await response.json();
+    return data;
+}
+
+document.getElementById("letsGoBtn").addEventListener("click", async () => {
+    const pirateName = document.getElementById("pirateNameInput").value.trim();
+
+    if (!pirateName) {
+        alert("Please enter a pirate name!");
+        return;
+    }
+
+    const data = await registerPirate(pirateName);
+
+    // Save the name for WelcomeMsgUI
+    localStorage.setItem("pirate_name", data.pirate_name);
+
+    // Move to next UI
+    window.location.href = "WelcomeMsg.html";
+});
