@@ -42,11 +42,7 @@ body {
     box-shadow: 0 0 18px #111;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4ff;
-}
+
 
 .container {
     width: 100vw;
@@ -65,6 +61,13 @@ header {
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+#home\ button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .icon-button {
