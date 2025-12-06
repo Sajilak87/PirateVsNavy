@@ -45,6 +45,10 @@ window.addEventListener("load", async () => {
 
     port.title = airport.name;
 
+    port.addEventListener("Click", (e) => {
+      e.stopPropagation();
+      alert(`Port Selected! (#${i + 1})`);
+
 
 
   }
@@ -54,9 +58,7 @@ window.addEventListener("load", async () => {
 
 
 
-    port.addEventListener("Click", (e) => {
-      e.stopPropagation();
-      alert(`Port Selected! (#${i + 1})`);
+
     });
     frag.appendChild(port);
   }
