@@ -9,19 +9,66 @@ const enemyHpFill = document.getElementById("enemyHpFill");
 const lootFill = document.getElementById("lootFill");
 const outcomeMsg = document.getElementById("outcomeMsg");
 
-const points = [
-    { x: 80,  y: 260 },
-    { x: 220, y: 150 },
-    { x: 380, y: 200 },
-    { x: 550, y: 120 },
-    { x: 720, y: 240 }
-];
+const mapDiv = document.getElementById("map");
+
+const PATH_PRESETS = {
+    1: [
+        { x: 80,  y: 260 },
+        { x: 220, y: 150 },
+        { x: 380, y: 200 },
+        { x: 550, y: 120 },
+        { x: 720, y: 240 }
+    ],
+    2: [
+        { x: 90,  y: 230 },
+        { x: 200, y: 270 },
+        { x: 340, y: 190 },
+        { x: 500, y: 220 },
+        { x: 700, y: 160 }
+    ],
+    3: [
+        { x: 60,  y: 190 },
+        { x: 200, y: 120 },
+        { x: 360, y: 160 },
+        { x: 540, y: 200 },
+        { x: 720, y: 260 }
+    ],
+    4: [
+        { x: 100, y: 300 },
+        { x: 260, y: 260 },
+        { x: 420, y: 220 },
+        { x: 580, y: 180 },
+        { x: 740, y: 140 }
+    ],
+    5: [
+        { x: 70,  y: 140 },
+        { x: 230, y: 200 },
+        { x: 390, y: 260 },
+        { x: 560, y: 210 },
+        { x: 730, y: 170 }
+    ]
+};
+
+const selectedRouteIndex = 3
+
+let points = PATH_PRESETS[selectedRouteIndex] || PATH_PRESETS[1];
 
 let currentPoint = 0;
 
 let totalEncounters = 0;
 let encountersDone = 0;
 let gameFinished = false;
+
+
+function drawPoints() {
+    points.forEach(p => {
+        const dot = document.createElement("div");
+        dot.className = "point";
+        dot.style.left = p.x + "px";
+        dot.style.top = p.y + "px";
+        mapDiv.appendChild(dot);
+    });
+}
 
 // ----- INITIAL GAME STATE FROM BACKEND -----
 function loadGameState() {
@@ -138,5 +185,6 @@ tradeBtn.addEventListener("click", function () {
     sendChoice("trade");
 });
 
-// ----- START -----
+
+drawPoints();
 loadGameState();

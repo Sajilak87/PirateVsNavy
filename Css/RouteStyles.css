@@ -1,0 +1,79 @@
+.route-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    width: 60%;
+}
+
+.route-list li {
+    background: #1c273a;
+    border: 3px solid #4e709d;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.route-list {
+    color: white;
+    box-shadow: 0 0 12px #000;
+    transition: 0.2s ease-in-out;
+}
+
+.route-list li a {
+    color: #64b5f6;
+    text-decoration: none;
+}
+
+.route-list li:hover {
+    background: #2a3f57;
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 18px #111;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4ff;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    padding: 10px;
+    background: #293b8f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon-button {
+    border: none;
+    background: #4ea7ff;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.username-box {
+    background: #8ff0a4;
+    color: #003b1f;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
