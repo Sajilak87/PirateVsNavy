@@ -36,12 +36,6 @@ header h1 {
     flex: 1;
 }
 
-.page-title {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 26px;
-    font-weight: bold;
-}
 
 .icon-Button {
     background: #386fa4;
@@ -66,6 +60,7 @@ header h1 {
     border-radius: 8px;
     font-weight: bold;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 main {
@@ -76,7 +71,7 @@ main {
 
 #mapContainer {
     position: relative;
-    width: 60%;
+    width: 70%;
     min-width: 600px;
     max-width: 850px;
 }
