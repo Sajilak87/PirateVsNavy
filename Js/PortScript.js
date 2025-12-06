@@ -24,7 +24,7 @@ window.addEventListener("load", async () => {
 
   let airports = [];
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/create_pirate");
+    const res = await fetch("http://127.0.0.1:5000/api/airports");
     airports = await res.json();
   } catch (err) {
     console.error("Failed to fetch airports:", err);
