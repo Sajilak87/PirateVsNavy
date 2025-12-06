@@ -23,6 +23,13 @@ header {
     justify-content: space-between;
 }
 
+.page-title {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
 .top-bar {
     width: 100%;
     display: flex;
@@ -33,7 +40,7 @@ header {
     border-bottom: 2px solid #ddd;
 }
 
-.icon-btn {
+.icon-Button {
     background: #386fa4;
     border: none;
     padding: 10px 14px;
@@ -118,7 +125,7 @@ header {
     justify-content: space-between;
 }
 
-.icon-btn {
+.icon-Button {
     border: none;
     background: #4ea7ff;
     color: white;
