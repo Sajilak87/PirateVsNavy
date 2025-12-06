@@ -149,3 +149,6 @@ header {
     cursor: pointer;
 }
 
+.port:hover {
+    transform: scale(1.2);
+}
