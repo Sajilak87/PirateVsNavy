@@ -45,9 +45,9 @@ window.addEventListener("load", async () => {
 
     port.title = airport.name;
 
-    port.addEventListener("Click", (e) => {
+    port.addEventListener("Click", async (e) => {
       e.stopPropagation();
-      alert(`Port Selected! (#${i + 1})`);
+      alert(`Port Selected! (#${i + 1} - ${airport.ident})`);
 
 
 
