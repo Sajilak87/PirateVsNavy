@@ -133,6 +133,12 @@ header {
     margin-top: 20px;
 }
 
+#map {
+    width: 100%;
+    border: 4px solid #22306b;
+    border-radius: 10px;
+}
+
 .port {
     position: absolute;
     width: 18px;
