@@ -57,9 +57,7 @@ if (backBtn) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Wait 5 seconds
     setTimeout(() => {
-        // Redirect to boats page
-        window.location.href = "Boats.html";
+        window.location.href = "AvailableBoats.html";
     }, 5000);
 });
