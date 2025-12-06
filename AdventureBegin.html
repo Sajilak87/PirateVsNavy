@@ -8,13 +8,19 @@
         function goHome() {
             window.location.href = "Home.html";
         }
+        function goBack() {
+            window.history.back();
+        }
+        function startAdventure() {
+            window.location.href = "GamePlay.html";
+        }
     </script>
 </head>
 <body>
 
 <div id="ui-top">
     <div class="top-left-group">
-        <button id="backBtn">⟵</button>
+        <button id="backBtn" onclick="goBack()">⟵</button>
         <button id="homeBtn" onclick="goHome()">🏠</button>
     </div>
     <div id="username">User Name</div>
@@ -40,7 +46,7 @@
     </main>
 
     <footer class="game-footer">
-        <button class="start-button">Adventure Begins</button>
+        <button class="start-button" onclick="startAdventure()">Adventure Begins</button>
     </footer>
 </div>
 
