@@ -43,8 +43,6 @@ window.addEventListener("load", async () => {
   }
 
 
-    port.style.pointerEvents = "auto";
-
     const x = Math.random() * 90 + 5;
     const y = Math.random() * 90 + 5;
 
