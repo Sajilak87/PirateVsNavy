@@ -23,6 +23,16 @@ header {
     justify-content: space-between;
 }
 
+.top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #f4f4f4;
+    border-bottom: 2px solid #ddd;
+}
+
 .icon-btn {
     background: #386fa4;
     border: none;
