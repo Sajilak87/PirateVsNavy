@@ -38,16 +38,21 @@ window.addEventListener("load", async () => {
     port.style.position = "absolute";
     port.style.pointerEvents = "auto";
 
+    const x = Math.random() * 90 + 5;
+    const y = Math.random() * 90 + 5;
+    port.style.left = x + "%";
+    port.style.top = y + "%";
+
+    port.title = airport.name;
+
 
 
   }
 
 
-    const x = Math.random() * 90 + 5;
-    const y = Math.random() * 90 + 5;
 
-    port.style.left = x + "%";
-    port.style.top = y + "%";
+
+
 
     port.addEventListener("Click", (e) => {
       e.stopPropagation();
