@@ -85,6 +85,11 @@ header {
 
 }
 
+.route-list li a {
+   color: #64b5f6;
+   text-decoration: none;
+}
+
 .container {
     width: 100vw;
     height: 100vh;
