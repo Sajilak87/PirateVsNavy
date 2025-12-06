@@ -1,4 +1,4 @@
-window.addEventListener("load",() => {
+window.addEventListener("load", async () => {
  let portsContainer = document.getElementById("ports");
  const mapContainer = document.getElementById("mapContainer") || document.body;
 
@@ -21,6 +21,10 @@ window.addEventListener("load",() => {
       parent.style.position = "relative";
     }
   }
+
+  let airports = [];
+
+
   const frag = document.createDocumentFragment();
   for (let i = 0; i < 10; i++) {
     const port = document.createElement("div");
