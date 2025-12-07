@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       try {
       sessionStorage.setItem("StartingPort",airport.ident);
-      sessionStorage.setItem("PortList",airport);
+      sessionStorage.setItem("PortList",airports);
 
       window.location.href = "AvailableRoutes.html";
 
