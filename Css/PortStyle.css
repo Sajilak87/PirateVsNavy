@@ -86,8 +86,9 @@ main {
 #mapContainer {
     position: relative;
     width: 60vw;
-    max-width: 700px;
+    max-width: 900px;
     height: auto;
+    margin: 0 auto;
 }
 
 #map {
