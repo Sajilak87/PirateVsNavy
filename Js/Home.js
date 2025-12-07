@@ -21,15 +21,14 @@ document.getElementById("startBtn").addEventListener("click", function () {
             };
 
             // Submit button → go to Welcome page
-            document.getElementById("popupSubmit").onclick = () => {
+            document.getElementById("goBtn").onclick = () => {
                 const name = document.getElementById("pirateName").value.trim();
                 if (name === "") {
                     alert("Enter Pirate’s Name!");
                     return;
                 }
 
-                // Save the name for the next page
-                localStorage.setItem("pirateName", name);
+                sessionStorage.setItem("PirateName",name);
 
                 // Redirect to group member's welcome UI
                 window.location.href = "WelcomeMsg.html";
@@ -50,19 +49,3 @@ async function registerPirate(pirateName) {
     return data;
 }
 
-document.getElementById("letsGoBtn").addEventListener("click", async () => {
-    const pirateName = document.getElementById("pirateNameInput").value.trim();
-
-    if (!pirateName) {
-        alert("Please enter a pirate name!");
-        return;
-    }
-
-    const data = await registerPirate(pirateName);
-
-    // Save the name for WelcomeMsgUI
-    localStorage.setItem("pirate_name", data.pirate_name);
-
-    // Move to next UI
-    window.location.href = "WelcomeMsg.html";
-});

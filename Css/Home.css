@@ -22,7 +22,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
   background: #1c3d5e;
   color: white;
 }
