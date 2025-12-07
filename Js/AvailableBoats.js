@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Home button
     const homeBtn = document.getElementById("homeBtn");
@@ -18,32 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load boats from API
     loadBoats();
 
-    const chooseBtn = document.getElementById("chooseBoatBtn");
-    const boatNumberInput = document.getElementById("boatNumber");
 
-    // When user clicks GO
-    if (chooseBtn && boatNumberInput) {
-        chooseBtn.addEventListener("click", () => {
-            const n = parseInt(boatNumberInput.value, 10);
 
-            const max = parseInt(boatNumberInput.max || "0", 10);
-
-            if (Number.isNaN(n) || n < 1 || n > max) {
-                alert(`Please enter a boat number from 1 to ${max}.`);
-                return;
-            }
-
-            // Get selected boat name from the list
-            const listItems = document.querySelectorAll("#boatList li");
-            const chosenLi = listItems[n - 1];
-            const nameSpan = chosenLi.querySelector(".boat-name");
-            const chosenName = nameSpan.textContent;
-
-            alert("You selected: " + chosenName);
-
-            // later: save selected boat to localStorage or send to API
-        });
-    }
 });
 
 // ----------------------
@@ -81,4 +59,54 @@ async function loadBoats() {
         listContainer.innerHTML =
             "<li>Error: Could not load boats from API.</li>";
     }
+}
+
+
+const chooseBtn1 = document.getElementById("chooseBoatBtn");
+const boatNumberInput1 = document.getElementById("boatNumber");
+// When user clicks GO
+if (chooseBtn1 && boatNumberInput1) {
+    chooseBtn1.addEventListener("click", async () => {
+        const n = parseInt(boatNumberInput1.value, 10);
+        const max = parseInt(boatNumberInput1.max || "0", 10);
+
+        if (Number.isNaN(n) || n < 1 || n > max) {
+            alert(`Please enter a boat number from 1 to ${max}.`);
+            return;
+        }
+
+        // Get selected boat name from the list
+        const listItems = document.querySelectorAll("#boatList li");
+        const chosenLi = listItems[n - 1];
+        const pirateName = sessionStorage.getItem("PirateName");
+
+        // ----- NEW: CALL CREATE PIRATE API -----
+        try {
+            const res = await fetch("http://127.0.0.1:5000/api/create_pirate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    pirate_name: pirateName,
+                    boat_id: n,
+
+                })
+            });
+
+            const result = await res.json();
+
+            if (res.ok) {
+                //alert("Pirate created! ID = " + result.pirate_id);
+                // You can redirect:
+                sessionStorage.setItem("PirateId",result.pirate_id)
+                 window.location.href = "../AvailableRoutes.html";
+            } else {
+                alert("Error: " + result.error);
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
+        // ----------------------------------------
+
+    });
 }

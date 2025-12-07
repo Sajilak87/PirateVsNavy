@@ -16,7 +16,7 @@ CORS(app)
 
 @app.post("/api/create_pirate")
 def create_pirate_api():
-    data = request.json
+    data =request.get_json()
 
     pirate_name = data.get("pirate_name", "Nameless Corsair")
     boat_id = data.get("boat_id")
