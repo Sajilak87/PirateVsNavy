@@ -25,7 +25,10 @@ header {
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 12px;
+    position: relative;
+
 }
 
 header h1 {
@@ -104,6 +107,12 @@ header h1 {
     text-decoration: none;
 }
 
+#back\ button,
+#home\ button {
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+}
 
 
 body.route-screen {
