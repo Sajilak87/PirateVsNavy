@@ -94,10 +94,11 @@ function renderRoutes(routes) {
 
         a.addEventListener("click", () => {
             sessionStorage.setItem("SelectedRouteIndex", route.index);
+            sessionStorage.setItem("NavyMeets",route.navy_meets);
 
             sessionStorage.setItem("SelectedRoute", JSON.stringify(route));
 
-            window.location.href = "NavyEncounter.html";
+            window.location.href = "GamePlay.html";
         });
 
         li.appendChild(a);
