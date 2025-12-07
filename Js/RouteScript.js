@@ -1,4 +1,3 @@
-
 window.addEventListener("DOMContentLoaded", () => {
     SelectDestination();
     });
@@ -82,18 +81,29 @@ async function loadAvailableRoutes() {
 
 function renderRoutes(routes) {
     const list = document.getElementById("routeList");
-
-    if (!list) {
-        console.error("routeList element not found!");
-        return;
-    }
-
-    list.innerHTML = ""; // clear
+    list.innerHTML = "";
 
     routes.forEach(route => {
         const li = document.createElement("li");
-        const text = `${route.index}. ${route.path.join(" -> ")} | Navy meets: ${route.navy_meets}`;
-        li.innerHTML = `<a href="#">${text}</a>`;
+
+        const a = document.createElement("a");
+        a.href = "#";
+
+        const pathText = route.path.join(" -> ");
+        a.textContent = `${route.index}. ${pathText}  |  Navy meets: ${route.navy_meets}`;
+
+        a.addEventListener("click", () => {
+            sessionStorage.setItem("SelectedRouteIndex", route.index);
+
+            sessionStorage.setItem("SelectedRoute", JSON.stringify(route));
+
+            window.location.href = "NavyEncounter.html";
+        });
+
+        li.appendChild(a);
         list.appendChild(li);
     });
 }
+
+
+
