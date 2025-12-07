@@ -98,7 +98,7 @@ if (chooseBtn1 && boatNumberInput1) {
                 //alert("Pirate created! ID = " + result.pirate_id);
                 // You can redirect:
                 sessionStorage.setItem("PirateId",result.pirate_id)
-                 window.location.href = "../AvailableRoutes.html";
+                 window.location.href = "SelectAPort.html";
             } else {
                 alert("Error: " + result.error);
             }
