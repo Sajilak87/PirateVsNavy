@@ -1,88 +1,99 @@
-PortScript.js
---------------------
-window.addEventListener("DOMContentLoaded", async () => {
 
-  let portsContainer = document.getElementById("ports");
-  const mapContainer = document.getElementById("mapContainer") || document.body;
-
-  if (!portsContainer) {
-    console.warn('No element with id="ports" found - creating one automatically.');
-    portsContainer = document.createElement("div");
-    portsContainer.id = "ports";
-    portsContainer.style.position = "absolute";
-    portsContainer.style.inset = "0";
-    portsContainer.style.pointerEvents = "none";
-    mapContainer.appendChild(portsContainer);
-  }
-
-
-  const map = document.getElementById("map");
-  if (!map) {
-    console.warn('No element with id="map" found. Ports will still be created inside #mapContainer, but position may be off.');
-  } else {
-    const parent = map.parentElement;
-    if (parent && getComputedStyle(parent).position === "static") {
-      parent.style.position = "relative";
-    }
-  }
-
-
-  let airports = [];
-  try {
-    const res = await fetch("http://127.0.0.1:5000/api/airports");
-    const data = await res.json();
-    console.log("Airports API response:", data);
-
-    if (Array.isArray(data)) {
-      airports = data;
-    } else if (Array.isArray(data.airports)) {
-      airports = data.airports;
-    } else {
-      console.error("Unexpected airports response shape:", data);
-    }
-  } catch (err) {
-    console.error("Failed to fetch airports:", err);
-  }
-
-
-  if (!airports || airports.length === 0) {
-    console.warn("No airports received from API.");
-    return;
-  }
-
-
-  const frag = document.createDocumentFragment();
-
-  airports.forEach((airport, i) => {
-    const port = document.createElement("div");
-    port.classList.add("port");
-    port.style.position = "absolute";
-    port.style.pointerEvents = "auto";
-
-    const x = Math.random() * 90 + 5;
-    const y = Math.random() * 90 + 5;
-    port.style.left = x + "%";
-    port.style.top = y + "%";
-
-     port.title = airport.name || airport.ident || `Airport ${i + 1}`;
-
-    port.addEventListener("click", async (e) => {
-      e.stopPropagation();
-
-      try {
-      sessionStorage.setItem("StartingPort",airport.ident);
-
-      sessionStorage.setItem("PortList", JSON.stringify(airports));
-
-      window.location.href = "AvailableRoutes.html";
-
-      } catch (err) {
-        console.error("Error selecting port or fetching routes:", err);
-      }
+window.addEventListener("DOMContentLoaded", () => {
+    SelectDestination();
     });
 
-    frag.appendChild(port);
-  });
+async function SelectDestination() {
+    const PortList = JSON.parse(sessionStorage.getItem("PortList"));
+    const startAirportId = sessionStorage.getItem("StartingPort");
 
-  portsContainer.appendChild(frag);
-});
+    if (!startAirportId) {
+        console.error("Missing pirateId or startAirportId in sessionStorage");
+        return;
+    }
+
+    try {
+        const setStartRes = await fetch("http://127.0.0.1:5000/api/set-start", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                start_ident: startAirportId,
+                Ports : PortList
+
+            })
+        });
+
+        if (!setStartRes.ok) {
+            console.error("Failed to set start:", setStartRes.status);
+            const errText = await setStartRes.text();
+            console.error("Response text:", errText);
+            return;
+        }
+
+
+        const setStartData = await setStartRes.json();
+        const destinationPort = setStartData.dest_airport;
+        sessionStorage.setItem("DestinationPort", JSON.stringify(destinationPort));
+
+        loadAvailableRoutes();
+
+
+    } catch (err) {
+        console.error("Error in SelectDestination:", err);
+    }
+}
+
+async function loadAvailableRoutes() {
+    const PortListStr = sessionStorage.getItem("PortList");
+    const startAirportId = sessionStorage.getItem("StartingPort");
+    const destStr = sessionStorage.getItem("DestinationPort");
+
+    const airports = JSON.parse(PortListStr);
+    const destObj = JSON.parse(destStr);      // we stored this with JSON.stringify()
+    const destIdent = destObj.ident;
+
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/routes", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                airports: airports,
+                start_airport_id: startAirportId,
+                dest_airport: destIdent
+            })
+        });
+
+        if (!response.ok) {
+            console.error("Route API error:", response.status);
+            console.error(await response.text());
+            return;
+        }
+
+        const data = await response.json();
+        console.log("Routes:", data);
+
+        renderRoutes(data.routes);
+
+    } catch (err) {
+        console.error("Error loading routes:", err);
+    }
+}
+
+function renderRoutes(routes) {
+    const list = document.getElementById("routeList");
+
+    if (!list) {
+        console.error("routeList element not found!");
+        return;
+    }
+
+    list.innerHTML = ""; // clear
+
+    routes.forEach(route => {
+        const li = document.createElement("li");
+        const text = `${route.index}. ${route.path.join(" -> ")} | Navy meets: ${route.navy_meets}`;
+        li.innerHTML = `<a href="#">${text}</a>`;
+        list.appendChild(li);
+    });
+}
