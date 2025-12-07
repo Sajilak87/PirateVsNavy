@@ -24,7 +24,9 @@ header {
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-start;
+    position: relative;
 }
 
 .header-left {
@@ -56,6 +58,13 @@ header h1 {
 .icon-Button:hover {
     background: #1a8be6;
     transform: scale(1.08);
+}
+
+#back\ button,
+#home\ button {
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .username-box {
