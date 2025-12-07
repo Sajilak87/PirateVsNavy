@@ -58,10 +58,15 @@ body {
 /* -------- Title -------- */
 .title {
   margin: 10px 0;
-  font-size: 60px;
-  font-weight: bolder;
+  font-size: 70px;
+  font-weight: 900;
   font-style: initial;
-  color: goldenrod;
+  text-align: center;
+  background: linear-gradient(#FFD700, #FF8C00);-webkit-background-clip: text;
+  color: #00C8FF;
+  text-shadow: 0 0 12px #003B6F, 0 0 20px #001F36;
+
+
 }
 
 /* -------- Main Hero Section -------- */
