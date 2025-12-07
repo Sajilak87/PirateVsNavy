@@ -86,7 +86,7 @@ if (chooseBtn1 && boatNumberInput1) {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    boat_name: pirateName,
+                    pirate_name: pirateName,
                     boat_id: n,
 
                 })
