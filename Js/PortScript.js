@@ -1,5 +1,4 @@
-PortScript.js
---------------------
+
 window.addEventListener("DOMContentLoaded", async () => {
 
   let portsContainer = document.getElementById("ports");
