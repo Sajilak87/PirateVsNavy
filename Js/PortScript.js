@@ -1,5 +1,5 @@
 
-window.addEventListener("load", async () => {
+window.addEventListener("DOMContentLoaded", async () => {
  let portsContainer = document.getElementById("ports");
  const mapContainer = document.getElementById("mapContainer") || document.body;
 
@@ -26,7 +26,8 @@ window.addEventListener("load", async () => {
   let airports = [];
   try {
     const res = await fetch("http://127.0.0.1:5000/api/airports");
-    airports = await res.json();
+    const data = await res.json();
+    airport = data.airports;
   } catch (err) {
     console.error("Failed to fetch airports:", err);
   }
@@ -50,30 +51,8 @@ window.addEventListener("load", async () => {
       e.stopPropagation();
       alert(`Port Selected! (#${i + 1} - ${airport.ident})`);
       try {
-        const startRes = await fetch("http://127.0.0.1:5000/api/airports", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            start_ident: airport.ident,
-            Ports: airports
-          })
-        });
 
-        const startData = await startRes.json();
-        console.log("Start airport set:", startData);
 
-        const routesRes = await fetch("http://127.0.0.1:5000/api/routes", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            airports,
-            start_airport_id: startData.start_airport_id,
-            dest_airport: startData.dest_airport
-          })
-        });
-
-        const routesData = await routesRes.json();
-        console.log("Routes:", routesData);
 
       } catch (err) {
                 console.error("Error selecting port or fetching routes:", err);
