@@ -15,6 +15,12 @@ document.getElementById("startBtn").addEventListener("click", function () {
             // Show popup
             document.querySelector(".popup-overlay").style.display = "flex";
 
+            // ⭐ Automatically focus the input field
+    setTimeout(() => {
+        document.getElementById("pirateName").focus();
+    }, 50);
+
+
             // Close button
             document.getElementById("popupClose").onclick = () => {
                 document.querySelector(".popup-overlay").style.display = "none";
@@ -36,16 +42,16 @@ document.getElementById("startBtn").addEventListener("click", function () {
         });
 });
 
-async function registerPirate(pirateName) {
-    const response = await fetch("http://127.0.0.1:5000/api/create_pirate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            pirate_name: pirateName
-        })
-    });
+//async function registerPirate(pirateName) {
+    //const response = await fetch("http://127.0.0.1:5000/api/create_pirate", {
+        //method: "POST",
+        //headers: { "Content-Type": "application/json" },
+        //body: JSON.stringify({
+            //pirate_name: pirateName
+        //})
+    //});
 
-    const data = await response.json();
-    return data;
-}
+    //const data = await response.json();
+    //return data;
+//}
 
