@@ -15,7 +15,7 @@ document.getElementById("startBtn").addEventListener("click", function () {
             // Show popup
             document.querySelector(".popup-overlay").style.display = "flex";
 
-            // ⭐ Automatically focus the input field
+            // Automatically focus the input field
     setTimeout(() => {
         document.getElementById("pirateName").focus();
     }, 50);

@@ -58,10 +58,10 @@ body {
 /* -------- Title -------- */
 .title {
   margin: 10px 0;
-  font-size: 40px;
-  font-weight: bold;
+  font-size: 60px;
+  font-weight: bolder;
   font-style: initial;
-  color: gold;
+  color: goldenrod;
 }
 
 /* -------- Main Hero Section -------- */
@@ -83,7 +83,7 @@ body {
 
 /* Full video background */
 .bg-video {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -92,35 +92,41 @@ body {
   z-index: -1;
 }
 
-/* Buttons stay on top */
+/* -------- Card Section -------- */
+.top-blue-bar {
+    width: 100%;
+    background-color: #063970;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Content inside blue bar */
+.top-bar-content {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: nowrap;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Start button */
 .btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 15px 25px;
-  background: green;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: bold;
+    background-color: limegreen;
+    color: white;
+    padding: 6px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .btn:hover {
   background: wheat;
 }
-
-/* -------- Card Section -------- */
-.card {
-  background: #10263f;
-  padding: 20px;
-  margin-top: 30px;
-  border-radius: 10px;
-}
-
-.card h2 {
-  font-size: 24px;
-}
-
 /* -------- Footer -------- */
 .site-footer {
   margin-top: auto;
