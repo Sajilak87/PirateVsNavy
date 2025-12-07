@@ -97,3 +97,11 @@ main {
 .port:hover {
     transform: scale(1.25);
 }
+
+body.ports-screen {
+    margin: 0;
+    font-family: Poppins, Arial, sans-serif;
+
+    background: url("../Images/pic1.jpeg") no-repeat center center fixed;
+    background-size: cover;
+}
