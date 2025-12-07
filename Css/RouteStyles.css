@@ -53,6 +53,8 @@ header h1 {
     transform: scale(1.08);
 }
 
+
+
 .username-box {
     background: #8ff0a4;
     color: #003b1f;
@@ -76,7 +78,7 @@ header h1 {
 .route-list li {
     background: #1c273a;
     border: 3px solid #4e709d;
-    padding: 18px;
+    padding: 12px;
     margin-bottom: 16px;
     border-radius: 12px;
     text-align: center;
@@ -95,23 +97,21 @@ header h1 {
 }
 
 .route-list li a {
+    display: block;
+    width: 100%;
+    height: 100%;
     color: #64b5f6;
     text-decoration: none;
 }
 
 
+
 body.route-screen {
     background: url("../Images/pic2.jpeg") no-repeat center center fixed;
     background-size: cover;
 }
 
 
-body.route-screen {
-    margin: 0;
-    font-family: Poppins, Arial, sans-serif;
 
-    background: url("../Images/pic2.jpeg") no-repeat center center fixed;
-    background-size: cover;
-}
 
 
