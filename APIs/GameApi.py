@@ -50,18 +50,12 @@ def get_airports():
     return jsonify(airports)
 
 
-@app.route("/api/set-start", methods=["POST"])
+@app.post("/api/set-start")
 def api_set_start():
 
     data = request.get_json()
     start_id = data.get("start_ident")
     airports = data.get("Ports")
-
-    if not airports:
-        airports = list_random_airports()
-
-    if not any(a["ident"] == start_id for a in airports):
-        return jsonify({"error": "Invalid start airport"}), 400
 
     dest = engine.select_destination(start_id, airports)
 
@@ -72,12 +66,14 @@ def api_set_start():
     })
 
 
-@app.route("/api/routes")
+@app.post("/api/routes")
 def api_routes():
     data = request.get_json()
     airports = data.get("airports")
     start_id = data.get("start_airport_id")
     dest = data.get("dest_airport")
+
+
 
     if not airports or not start_id or not dest:
         return jsonify({"error": "Missing start/destination"}), 400
@@ -85,8 +81,8 @@ def api_routes():
     routes = engine.generate_routes(
         selectedAirports=airports,
         start_airport_id=start_id,
-        dest_airport_id=dest["ident"],
-        n_routes=4
+        dest_airport_id=dest,
+        n_routes=5
     )
 
     simple_routes = []
