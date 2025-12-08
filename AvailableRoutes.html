@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Available Routes — Pirate vs Navy</title>
     <link rel="stylesheet" href="Css/RouteStyles.css" />
-    <script src="Js/RouteScript.js" defer></script>
+    <script>
+        function goHome() {
+            window.location.href = "Home.html";
+        }
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
 
 <body class="route-screen">
 
     <div id="ui-top">
         <div class="top-left-group">
-            <button id="backBtn" class="icon-button">⬅️</button>
-            <button id="homeBtn" class="icon-button">🏠</button>
+            <button id="backBtn" class="icon-button" onclick="goBack()">⬅️</button>
+            <button id="homeBtn" class="icon-button" onclick="goHome()">🏠</button>
         </div>
         <div id="username">User Name</div>
     </div>
@@ -27,6 +34,6 @@
             <ul class="route-list" id="routeList"></ul>
         </main>
     </div>
-
+    <script src="Js/RouteScript.js" defer></script>
 </body>
 </html>
