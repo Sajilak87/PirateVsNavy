@@ -3,6 +3,7 @@ html, body {
     overflow: hidden;
 }
 
+
 body {
     margin: 0;
     font-family: "Trebuchet MS", Arial, sans-serif;
@@ -76,14 +77,12 @@ main {
 
 #mapContainer {
     position: relative;
-    width: 60vw;
-    max-width: 700px;
-    height: auto;
+    width: 70%;
+    max-width: 900px;
 }
 
 #map {
     width: 100%;
-    height: auto;
     border: 4px solid #22306b;
     border-radius: 12px;
     display: block;
@@ -106,6 +105,8 @@ main {
 }
 
 body.ports-screen {
+    margin: 0;
+    font-family: Poppins, Arial, sans-serif;
 
     background: url("../Images/pic1.jpeg") no-repeat center center fixed;
     background-size: cover;

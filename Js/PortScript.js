@@ -1,3 +1,4 @@
+
 window.addEventListener("DOMContentLoaded", async () => {
 
   let portsContainer = document.getElementById("ports");
@@ -69,7 +70,8 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       try {
       sessionStorage.setItem("StartingPort",airport.ident);
-      sessionStorage.setItem("PortList",airport);
+
+      sessionStorage.setItem("PortList", JSON.stringify(airports));
 
       window.location.href = "AvailableRoutes.html";
 

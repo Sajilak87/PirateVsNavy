@@ -34,26 +34,20 @@
     </div>
 
     <div id="popup-body">
-        <div class="stat">
-            ❤️ Enemy HP:
-            <div class="bar">
-                <div class="fill red" id="enemyHpFill"></div>
-            </div>
-        </div>
-        <div class="stat">
-            🟦 Loot Chance:
-            <div class="bar">
-                <div class="fill blue" id="lootFill"></div>
-            </div>
-        </div>
 
-        <p id="outcomeMsg"></p>
-
-        <div id="popup-buttons">
-            <button class="game-btn fight">Fight</button>
-            <button class="game-btn trade">Trade</button>
-        </div>
+    <div id="player-stats">
+        ❤️ Life: <span id="lifeValue">0</span>
+        🪙 Gold: <span id="goldValue">0</span>
     </div>
+
+    <p id="outcomeMsg"></p>
+
+    <div id="popup-buttons">
+        <button class="game-btn fight">Fight</button>
+        <button class="game-btn trade">Trade</button>
+    </div>
+
+</div>
 </div>
 
 <script src="Js/GameJs.js"></script>
