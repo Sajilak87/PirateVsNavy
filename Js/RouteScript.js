@@ -98,7 +98,7 @@ function renderRoutes(routes) {
 
             sessionStorage.setItem("SelectedRoute", JSON.stringify(route));
 
-            window.location.href = "GamePlay.html";
+            window.location.href = "AdventureBegin.html";
         });
 
         li.appendChild(a);
