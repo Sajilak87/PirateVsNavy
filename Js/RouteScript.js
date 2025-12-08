@@ -48,7 +48,7 @@ async function loadAvailableRoutes() {
     const destStr = sessionStorage.getItem("DestinationPort");
 
     const airports = JSON.parse(PortListStr);
-    const destObj = JSON.parse(destStr);      // we stored this with JSON.stringify()
+    const destObj = JSON.parse(destStr);
     const destIdent = destObj.ident;
 
 
