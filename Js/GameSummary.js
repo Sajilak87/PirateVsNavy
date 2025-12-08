@@ -1,89 +1,99 @@
-const SUMMARY_API = "http://127.0.0.1:5000/api/summary";
-
-function getPirateId() {
-    const stored = Number(localStorage.getItem("pirate_id"));
-    return Number.isFinite(stored) ? stored : 1;
-}
-
-async function fetchSummary(pirateId) {
-    const payload = { pirate_id: pirateId };
-
-    let response = await fetch(SUMMARY_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-        response = await fetch(`${SUMMARY_API}?pirate_id=${encodeURIComponent(pirateId)}`);
-    }
-
-    if (!response.ok) {
-        const text = await response.text();
-        throw new Error(`Summary request failed (${response.status}): ${text}`);
-    }
-
-    return response.json();
-}
-
-function safeParseRoute(routeValue) {
-    if (!routeValue) return null;
-    if (typeof routeValue === "object") return routeValue;
-    try {
-        return JSON.parse(routeValue);
-    } catch (err) {
-        console.warn("Could not parse route JSON:", err);
-        return null;
-    }
-}
-
-function renderSummary(data) {
-    const pirateNameEl = document.getElementById("pirateName");
-    const boatNameEl = document.getElementById("boatName");
-    const routeSummaryEl = document.getElementById("routeSummary");
-    const encounterCountEl = document.getElementById("encounterCount");
-    const encounterListEl = document.getElementById("encounterList");
-    const statusTextEl = document.getElementById("statusText");
-    const finalLifeEl = document.getElementById("finalLife");
-    const finalGoldEl = document.getElementById("finalGold");
-
-    const route = safeParseRoute(data.route);
-    const stops = route?.stops || route?.path || [];
-    const routeText = stops.length
-        ? stops.join(" ➜ ")
-        : `${data.start_airport_id || "??"} ➜ ${data.dest_airport || "??"}`;
-
-    if (pirateNameEl) pirateNameEl.textContent = data.pirate_name || "Unknown pirate";
-    if (boatNameEl) boatNameEl.textContent = data.boat_name || "Unknown boat";
-    if (routeSummaryEl) routeSummaryEl.textContent = routeText;
-
-    const encounterCount = route?.navy_meets ?? "-";
-    if (encounterCountEl) encounterCountEl.textContent = encounterCount;
-
-    if (encounterListEl) {
-        encounterListEl.innerHTML = "";
-        const li = document.createElement("li");
-        li.textContent = "Encounter details not provided by API.";
-        encounterListEl.appendChild(li);
-    }
-
-    if (statusTextEl) statusTextEl.textContent = data.result || "No result recorded.";
-    if (finalLifeEl) finalLifeEl.textContent = `❤️ Life = ${data.final_life ?? "?"}`;
-    if (finalGoldEl) finalGoldEl.textContent = `💰 Gold = ${data.final_gold ?? "?"}`;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    loadSummary();
+});
 
 async function loadSummary() {
+    const pirateId = Number(sessionStorage.getItem("PirateId"));
+
+    if (!pirateId) {
+        console.error("No PirateId in sessionStorage");
+        return;
+    }
+
     try {
-        const data = await fetchSummary(getPirateId());
-        if (data.error) {
-            throw new Error(data.error);
+        const res = await fetch("http://127.0.0.1:5000/api/summary", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Pirate_id: pirateId })
+        });
+
+        if (!res.ok) {
+            console.error("Summary API error:", res.status);
+            console.error(await res.text());
+            return;
         }
-        renderSummary(data);
+
+        const data = await res.json();
+        console.log("Summary data:", data);
+
+        if (data.error) {
+            console.error("API error:", data.error);
+            return;
+        }
+
+        fillSummaryUI(data);
+
     } catch (err) {
-        console.error("Failed to load summary:", err);
-        const statusTextEl = document.getElementById("statusText");
-        if (statusTextEl) statusTextEl.textContent = "Unable to load summary.";
+        console.error("Error loading summary:", err);
     }
 }
 
-document.addEventListener("DOMContentLoaded", loadSummary);
+function fillSummaryUI(summary) {
+    // Basic info
+    document.getElementById("pirateName").textContent = summary.pirate_name || "Unknown";
+    document.getElementById("boatName").textContent = summary.boat_name || "Unknown";
+
+    // Route summary
+    let routeText = "";
+    let encounterCount = 0;
+
+    let routeObj = summary.route;
+
+    if (typeof routeObj === "string") {
+        try {
+            routeObj = JSON.parse(routeObj);
+        } catch (e) {
+        }
+    }
+
+    if (routeObj && Array.isArray(routeObj.stops)) {
+        routeText = routeObj.stops.join(" ➜ ");
+        encounterCount = routeObj.navy_meets || 0;
+    } else if (Array.isArray(routeObj)) {
+        routeText = routeObj.join(" ➜ ");
+    } else if (typeof routeObj === "string") {
+        routeText = routeObj;
+    } else {
+        routeText = "Unknown route";
+    }
+
+    document.getElementById("routeSummary").textContent = routeText;
+    document.getElementById("encounterCount").textContent = encounterCount;
+
+    const statusEl = document.getElementById("statusText");
+    if (summary.result === "success") {
+        statusEl.textContent = "✨ Found the treasure!";
+    } else if (summary.result === "death") {
+        statusEl.textContent = "💀 Ship lost at sea...";
+    } else {
+        statusEl.textContent = "Voyage completed.";
+    }
+
+    document.getElementById("finalLife").textContent =
+        `❤️ Life = ${summary.final_life}`;
+    document.getElementById("finalGold").textContent =
+        `💰 Gold = ${summary.final_gold}`;
+
+    const list = document.getElementById("encounterList");
+    list.innerHTML = "";
+
+    if (encounterCount > 0) {
+        const li = document.createElement("li");
+        li.textContent = `Total encounters: ${encounterCount}. (Detailed log not stored.)`;
+        list.appendChild(li);
+    } else {
+        const li = document.createElement("li");
+        li.textContent = "No encounters recorded.";
+        list.appendChild(li);
+    }
+}

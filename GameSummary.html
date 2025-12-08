@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Game Summary</title>
-    <link rel="stylesheet" href="Css/GameSummary.css">
+    <link rel="stylesheet" href="Css/GameSummary.css" />
+
     <script>
         function goHome() {
             window.location.href = "Home.html";
         }
+
         function tryAgain() {
             window.location.href = "GamePlay.html";
         }
@@ -17,63 +19,66 @@
 
 <body class="welcome-screen">
 
+    <!-- TOP UI BAR -->
     <div id="ui-top">
         <div class="top-left-group">
-            <button id="backBtn">⟵</button>
+            <button id="backBtn" onclick="goHome()">⟵</button>
             <button id="homeBtn" onclick="goHome()">🏠</button>
         </div>
         <div id="username">User Name</div>
     </div>
 
+    <!-- SUMMARY MAIN SECTION -->
     <main class="summary-frame">
         <section class="summary-panel">
 
             <h1 class="summary-title">🏴‍☠️ VOYAGE SUMMARY 🏴‍☠️</h1>
 
+            <!-- Pirate + Boat -->
             <div class="summary-row">
                 <span class="label">🧑‍✈️ Pirate:</span>
-                <span id="pirateName">ahda</span>
+                <span id="pirateName">Loading...</span>
                 <span class="separator">|</span>
+
                 <span class="label">⛵ Boat:</span>
-                <span id="boatName">Crimson Tide</span>
+                <span id="boatName">Loading...</span>
             </div>
 
+            <!-- Route -->
             <div class="summary-row">
                 <span class="label">🗺️ Route:</span>
-                <span id="routeSummary">KATL ➜ LCLK ➜ UAAA</span>
+                <span id="routeSummary">Loading...</span>
             </div>
 
+            <!-- Encounter Count -->
             <div class="summary-row">
                 <span class="label">⚔️ Encounters:</span>
-                <span id="encounterCount">2</span>
+                <span id="encounterCount">0</span>
             </div>
 
+            <!-- Encounter List -->
             <ol class="encounter-list" id="encounterList">
-                <li>
-                    🤝 Trade &nbsp;|&nbsp;
-                    ❤️ Life <span class="life-change">-0</span> &nbsp;|&nbsp;
-                    💰 Gold <span class="gold-change">-20</span>
-                </li>
-                <li>
-                    ⚔️ Fight &nbsp;|&nbsp;
-                    ❤️ Life <span class="life-change">-12</span> &nbsp;|&nbsp;
-                    💰 Gold <span class="gold-change">+32</span>
-                </li>
+                <!-- JS will fill this -->
+                <li>Loading...</li>
             </ol>
 
+            <!-- Status -->
             <div class="summary-row status-row">
                 <span class="label">📜 Status:</span>
-                <span id="statusText">✨ Found the treasure!</span>
+                <span id="statusText">Loading...</span>
             </div>
 
+            <!-- Final Stats -->
             <div class="summary-row final-row">
                 <span class="label">🎯 Final:</span>
-                <span id="finalLife">❤️ Life = 78</span>
+                <span id="finalLife">❤️ Life = 0</span>
                 <span class="separator">|</span>
-                <span id="finalGold">💰 Gold = 212</span>
+                <span id="finalGold">💰 Gold = 0</span>
             </div>
 
         </section>
+
+        <!-- BUTTONS -->
         <div class="summary-actions">
             <button class="summary-btn try-btn" onclick="tryAgain()">Try Again</button>
             <button class="summary-btn exit-btn" onclick="goHome()">Exit</button>
