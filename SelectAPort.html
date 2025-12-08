@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name = "viewport" Content = "width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Select a Port - Pirate vs Navy</title>
     <link rel="stylesheet" href="Css/PortStyle.css" />
-    <script src="Js/PortScript.js"></script>
+    <script>
+        function goHome() {
+            window.location.href = "Home.html";
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
+
 <body class="ports-screen">
 
-<div class="container">
-
-    <header>
-        <div class="header-left">
-            <button id="home-Button" class="icon-Button">🏠</button>
-            <button id="back-Button" class="icon-Button">⬅️</button>
+    <div id="ui-top">
+        <div class="top-left-group">
+            <button id="back-Button" class="icon-button" onclick="goBack()">⬅️</button>
+            <button id="home-Button" class="icon-button" onclick="goHome()">🏠</button>
         </div>
-        <h1>Select Your Starting Port...</h1>
-        <div class="username-box">Username</div>
-    </header>
-</div>
-<main>
-   <div id="mapContainer">
-     <img src="Images/Pirate_map2.jpg" alt="Game Map" id="map"/>
-       <div id="ports"></div>
-   </div>
-</main>
+        <div id="username" class="username-box">User Name</div>
+    </div>
+
+
+    <h1 class="page-title">Select Your Starting Port...</h1>
+
+    <main>
+        <div id="mapContainer">
+            <img src="Images/Pirate_map2.jpg" alt="Game Map" id="map" />
+            <div id="ports"></div>
+        </div>
+    </main>
+    <script src="Js/PortScript.js"></script>
 </body>
+
 </html>
