@@ -1,44 +1,31 @@
-html, body {
-    height: 100%;
-    overflow: hidden;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
-body {
+body.route-screen {
     margin: 0;
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    background: #222;
+    background: url("../Images/pic2.jpeg") no-repeat center center fixed;
+    background-size: cover;
     color: white;
 }
 
-
-.container {
-    width: 100vw;
+#ui-top {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-}
-
-header {
-    width: 100%;
-    padding: 12px 18px;
+    padding: 12px 16px;
     background: #1c3d5e;
     color: white;
+}
+
+.top-left-group {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    position: relative;
-
+    gap: 8px;
 }
-
-header h1 {
-    margin: 0;
-    text-align: center;
-    font-size: 26px;
-    font-weight: bold;
-    flex: 1;
-}
-
 
 .icon-button {
     border: none;
@@ -53,34 +40,54 @@ header h1 {
 
 .icon-button:hover {
     background: #1a8be6;
-    transform: scale(1.08);
+    transform: scale(1.06);
 }
 
-
-
-.username-box {
-    background: #8ff0a4;
-    color: #003b1f;
-    padding: 8px 14px;
+#username {
+    background: #2f4b7d;
+    padding: 8px 16px;
     border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    white-space: nowrap;
+}
+
+.page-title {
+    margin: 24px auto 10px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #4b2c08;
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 6px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(255, 215, 128, 0.7),
+        0 0 16px rgba(255, 210, 100, 0.6);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 24px 12px 32px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .route-list {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 0;
     width: 60vw;
     max-width: 700px;
     color: white;
 }
 
-
 .route-list li {
     background: #1c273a;
-    border: 3px solid #4e709d;
+    border: 3px solid #5bd0ff;
     padding: 12px;
     margin-bottom: 16px;
     border-radius: 12px;
@@ -88,39 +95,28 @@ header h1 {
     font-size: 22px;
     font-weight: bold;
     transition: 0.2s ease;
-    box-shadow: 0 0 12px #000;
+    box-shadow:
+        0 0 14px rgba(0, 170, 255, 0.9),
+        0 0 4px rgba(0, 0, 0, 0.9);
     cursor: pointer;
+}
+
+.route-list li:last-child {
+    margin-bottom: 0;
 }
 
 .route-list li:hover {
     background: #2a3f57;
-    transform: scale(1.05);
-    cursor: pointer;
-    box-shadow: 0 0 18px #111;
+    transform: scale(1.04);
+    box-shadow:
+        0 0 20px rgba(0, 200, 255, 1),
+        0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .route-list li a {
     display: block;
     width: 100%;
     height: 100%;
-    color: #64b5f6;
+    color: #e9f6ff;
     text-decoration: none;
 }
-
-#back\ button,
-#home\ button {
-    position: relative;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-
-body.route-screen {
-    background: url("../Images/pic2.jpeg") no-repeat center center fixed;
-    background-size: cover;
-}
-
-
-
-
-

@@ -1,27 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Available Routes — Private vs Navy</title>
+    <title>Available Routes — Pirate vs Navy</title>
     <link rel="stylesheet" href="Css/RouteStyles.css" />
-    <script src="Js/RouteScript.js"></script>
+    <script src="Js/RouteScript.js" defer></script>
 </head>
 
 <body class="route-screen">
-    <div class="container">
-      <header>
-        <button id="home button" class="icon-button">🏠</button>
-        <button id="back button" class="icon-button">⬅️</button>
-        <h1>Available Routes...</h1>
-        <div class="username-box">Username</div>
-      </header>
 
+    <div id="ui-top">
+        <div class="top-left-group">
+            <button id="backBtn" class="icon-button">⬅️</button>
+            <button id="homeBtn" class="icon-button">🏠</button>
+        </div>
+        <div id="username">User Name</div>
+    </div>
+
+    <div>
+      <h1 class="page-title">Available Routes</h1>
+    </div>
+
+    <div class="container">
         <main>
-          <ul class="route-list" id="routeList">
-          </ul>
+            <ul class="route-list" id="routeList"></ul>
         </main>
     </div>
+
 </body>
 </html>
