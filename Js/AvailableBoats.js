@@ -2,6 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     // Home button
+
+    const name = sessionStorage.getItem("PirateName");
+    document.getElementById("username").innerText = name;
     const homeBtn = document.getElementById("homeBtn");
     if (homeBtn) {
         homeBtn.addEventListener("click", () => {
@@ -96,7 +99,6 @@ if (chooseBtn1 && boatNumberInput1) {
 
             if (res.ok) {
                 //alert("Pirate created! ID = " + result.pirate_id);
-                // You can redirect:
                 sessionStorage.setItem("PirateId",result.pirate_id)
                  window.location.href = "SelectAPort.html";
             } else {
@@ -106,7 +108,6 @@ if (chooseBtn1 && boatNumberInput1) {
         } catch (err) {
             console.error(err);
         }
-        // ----------------------------------------
 
     });
 }

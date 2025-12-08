@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+      const name = sessionStorage.getItem("PirateName");
+    document.getElementById("username").innerText = name;
     loadSummary();
 });
 

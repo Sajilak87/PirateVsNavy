@@ -58,6 +58,7 @@ if (backBtn) {
 // directed to the AvailableBoats page
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
+
         window.location.href = "AvailableBoats.html";
     }, 3000);
 });

@@ -17,6 +17,8 @@
 
         //  After 5 seconds, go to Available Boats page
         document.addEventListener("DOMContentLoaded", function () {
+            const name = sessionStorage.getItem("PirateName");
+            document.getElementById("username").innerText = name;
             setTimeout(function () {
                 window.location.href = "AvailableBoats.html";
             }, 3000);
@@ -33,7 +35,7 @@
         <button id="homeBtn" onclick="goHome()">🏠</button>
     </div>
 
-    <div id="username">User Name</div>
+    <div ><span id="username"></span></div>
 </div>
 
 <!--  WELCOME -->

@@ -1,6 +1,8 @@
 
 window.addEventListener("DOMContentLoaded", async () => {
 
+    const name = sessionStorage.getItem("PirateName");
+    document.getElementById("username").innerText = name;
   let portsContainer = document.getElementById("ports");
   const mapContainer = document.getElementById("mapContainer") || document.body;
 

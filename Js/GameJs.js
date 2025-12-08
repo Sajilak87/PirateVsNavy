@@ -58,6 +58,8 @@ let gameFinished = false;
 
 
 function drawPoints() {
+      const name = sessionStorage.getItem("PirateName");
+    document.getElementById("username").innerText = name;
     points.forEach(p => {
         const dot = document.createElement("div");
         dot.className = "point";
