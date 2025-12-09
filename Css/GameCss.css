@@ -32,7 +32,7 @@ body {
 
 #map {
     width: 1200px;
-    height: 750px;
+    height: 550px;
     border: 4px solid #333;
     background: url("../Images/Pirate_map2.jpg") center center fixed;
     margin: 20px auto;
