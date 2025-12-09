@@ -91,7 +91,7 @@ function fillSummaryUI(summary) {
 
     if (encounterCount > 0) {
         const li = document.createElement("li");
-        li.textContent = `Total encounters: ${encounterCount}. (Detailed log not stored.)`;
+        li.textContent = `Total encounters: ${encounterCount}`;
         list.appendChild(li);
     } else {
         const li = document.createElement("li");
